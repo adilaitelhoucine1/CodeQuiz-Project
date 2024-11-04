@@ -1,0 +1,14 @@
+{
+  "name": "quiz",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start" : "npx tailwindcss -i ./src/input.css -o ./public/style.css --watch"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "tailwindcss": "^3.4.14"
+  }
+}
