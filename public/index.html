@@ -6,7 +6,7 @@
     <title>Home</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body >
     <header class='flex shadow-md py-4 px-4 sm:px-10 bg-white font-[sans-serif] min-h-[70px] tracking-wide relative z-50'>
         <div class='flex flex-wrap items-center justify-between gap-5 w-full'>
           <a href="javascript:void(0)"><img src="/images/Quiz.svg" alt="logo" class='w-36 h-16' />
@@ -32,13 +32,13 @@
                 </a>
               </li>
               <li class='max-lg:border-b border-gray-300 max-lg:py-3 px-3'>
-                <a href='javascript:void(0)'
+                <a href='index.html'
                   class='hover:text-[#007bff] text-[#007bff] block font-semibold text-[15px]'>Home</a>
               </li>
-              <li class='max-lg:border-b border-gray-300 max-lg:py-3 px-3'><a href='javascript:void(0)'
+              <li class='max-lg:border-b border-gray-300 max-lg:py-3 px-3'><a href="quiz.html"
                   class='hover:text-[#007bff] text-gray-500 block font-semibold text-[15px]'>Quiz</a>
               </li>
-              <li class='max-lg:border-b border-gray-300 max-lg:py-3 px-3'><a href='javascript:void(0)'
+              <li class='max-lg:border-b border-gray-300 max-lg:py-3 px-3'><a href="admin.html"
                   class='hover:text-[#007bff] text-gray-500 block font-semibold text-[15px]'>Dashboard Administrateur</a>
               </li>
             </ul>
@@ -64,22 +64,23 @@
 
     <!-- titles -->
     <div class="m-auto w-full p-5">
-        <h1 class="font-black text-4xl text-center m-2 max-sm:text-lg">Coding quizzes for kids and teens</h1>
+        <h1 class="font-black text-4xl text-center m-2 max-sm:text-lg">Coding Quizzes For Kids And Teens</h1>
         <h6 class="text-center m-6 text-lg ">Great collection of fun and interactive coding quizzes for kids.</h6>
     </div>
 
  
-   <div class="cards flex max-sm:flex flex-wrap">
+   <div class="cards flex max-sm:flex flex-wrap gap-1.5	">
         <!-- card 1 -->
         <div class="bg-white shadow-[0_4px_12px_-5px_rgba(0,0,0,0.4)] w-full h-fit max-w-sm rounded-lg overflow-hidden mx-auto font-[sans-serif] mt-4">
                 <div class="min-h-[256px]">
-                    <img src="https://codingal.s3.amazonaws.com/media/quizcontest/thumbnail/2021/10/27/1_vJ2jfXs.png" class="w-full" />
+                    <img src="/images/htmll quiz logo.png" class="w-full" />
                 </div>
 
-                <div class="p-6">
-                    <h3 class="text-gray-800 text-xl font-bold">Introduction to Scratch Programming</h3>
-                    <p class="mt-4 text-sm text-gray-500 leading-relaxed"> Q : 10 </p>
-                    <p class="mt-4 text-sm text-gray-500 leading-relaxed"> Temps estimé</p>
+                <div class="p-6 card">
+                    <h3 class="text-gray-800 text-xl font-bold card-title">HTML & CSS QUIZ</h3>
+                    <h6 class="mt-4 text-sm text-gray-500 leading-relaxed"> Q : 10 </h6>
+                    <h5 class="mt-4 text-sm text-gray-500 leading-relaxed"> Temps estimé</h5>
+                    <p class="mt-4 text-sm text-gray-500 leading-relaxed card-description">Testez vos connaissances en HTML et CSS avec ce quiz interactif couvrant les bases de la structuration et de la mise en page web </p>
                     <button type="button"
                     class="mt-6 px-5 py-2.5 rounded-lg text-white text-sm tracking-wider border-none outline-none bg-blue-600 hover:bg-blue-700 active:bg-blue-600"
                     id="view-btn">View</button>
@@ -89,13 +90,14 @@
         <!-- card 2 -->
         <div class="bg-white shadow-[0_4px_12px_-5px_rgba(0,0,0,0.4)] w-full h-fit max-w-sm rounded-lg overflow-hidden mx-auto font-[sans-serif] mt-4">
             <div class="min-h-[256px]">
-                <img src="https://codingal.s3.amazonaws.com/media/quizcontest/thumbnail/2021/10/27/1_vJ2jfXs.png" class="w-full" />
+                <img src="/images/js quiz.png" class="w-full" />
             </div>
 
-            <div class="p-6">
-                <h3 class="text-gray-800 text-xl font-bold">Introduction to Scratch Programming</h3>
-                <p class="mt-4 text-sm text-gray-500 leading-relaxed"> Q : 10 </p>
-                <p class="mt-4 text-sm text-gray-500 leading-relaxed"> Temps estimé</p>
+            <div class="p-6 card">
+                <h3 class="text-gray-800 text-xl font-bold card-title">JavaScript QUIZ</h3>
+                <h5 class="mt-4 text-sm text-gray-500 leading-relaxed"> Q : 10 </h5>
+                <h6 class="mt-4 text-sm text-gray-500 leading-relaxed"> Temps estimé</h6>
+                <p class="mt-4 text-sm text-gray-500 leading-relaxed " id="card-description">Évaluez vos compétences en JavaScript avec ce quiz interactif sur les bases de la programmation et la manipulation du DOM</p>
                 <button type="button"
                 class="mt-6 px-5 py-2.5 rounded-lg text-white text-sm tracking-wider border-none outline-none bg-blue-600 hover:bg-blue-700 active:bg-blue-600"
                 id="view-btn">View</button>
@@ -105,19 +107,72 @@
         <!-- card 3 -->
         <div class="bg-white shadow-[0_4px_12px_-5px_rgba(0,0,0,0.4)] w-full h-fit max-w-sm rounded-lg overflow-hidden mx-auto font-[sans-serif] mt-4">
             <div class="min-h-[256px]">
-                <img src="https://codingal.s3.amazonaws.com/media/quizcontest/thumbnail/2021/10/27/1_vJ2jfXs.png" class="w-full" />
+                <img src="/images/sql logo.png" class="w-full" />
             </div>
 
-            <div class="p-6">
-                <h3 class="text-gray-800 text-xl font-bold">Introduction to Scratch Programming</h3>
-                <p class="mt-4 text-sm text-gray-500 leading-relaxed"> Q : 10 </p>
-                <p class="mt-4 text-sm text-gray-500 leading-relaxed"> Temps estimé</p>
+            <div class="p-6 card" >
+                <h3 class="text-gray-800 text-xl font-bold card-title">DataBase & SQL QUIZ</h3>
+                <h5 class="mt-4 text-sm text-gray-500 leading-relaxed"> Q : 10 </h5>
+                <h6 class="mt-4 text-sm text-gray-500 leading-relaxed"> Temps estimé</h6>
+                <p class="mt-4 text-sm text-gray-500 leading-relaxed card-description">Testez votre maîtrise de SQL avec ce quiz sur les bases de la gestion et  la manipulation des bases de données</p>
                 <button type="button"
                 class="mt-6 px-5 py-2.5 rounded-lg text-white text-sm tracking-wider border-none outline-none bg-blue-600 hover:bg-blue-700 active:bg-blue-600"
                 id="view-btn">View</button>
             </div>
-    </div>
+      </div>
         
+
+         <!-- card 4 -->
+         <div class="bg-white shadow-[0_4px_12px_-5px_rgba(0,0,0,0.4)] w-full h-fit max-w-sm rounded-lg overflow-hidden mx-auto font-[sans-serif] mt-4">
+          <div class="min-h-[256px]">
+              <img src="/images/java quiz.png" class="w-full" />
+          </div>
+
+          <div class="p-6 card" >
+              <h3 class="text-gray-800 text-xl font-bold card-title">Java</h3>
+              <h5 class="mt-4 text-sm text-gray-500 leading-relaxed"> Q : 10 </h5>
+              <h6 class="mt-4 text-sm text-gray-500 leading-relaxed"> Temps estimé</h6>
+              <p class="mt-4 text-sm text-gray-500 leading-relaxed card-description">Testez votre maîtrise de Java  avec ce quiz sur les bases de la programmation orientée Objet, la gestion des interfaces Graphiques, et la manipulation des bases de données</p>
+              <button type="button"
+              class="mt-6 px-5 py-2.5 rounded-lg text-white text-sm tracking-wider border-none outline-none bg-blue-600 hover:bg-blue-700 active:bg-blue-600"
+              id="view-btn">View</button>
+          </div>
+         </div>
+
+         <!-- card 5 -->
+        <div class="bg-white shadow-[0_4px_12px_-5px_rgba(0,0,0,0.4)] w-full h-fit max-w-sm rounded-lg overflow-hidden mx-auto font-[sans-serif] mt-4">
+                    <div class="min-h-[256px]">
+                        <img src="/images/git quiz.png" class="w-full" />
+                    </div>
+          
+                    <div class="p-6 card" >
+                        <h3 class="text-gray-800 text-xl font-bold card-title">Introduction to Github</h3>
+                        <h5 class="mt-4 text-sm text-gray-500 leading-relaxed"> Q : 10 </h5>
+                        <h6 class="mt-4 text-sm text-gray-500 leading-relaxed"> Temps estimé</h6>
+                        <p class="mt-4 text-sm text-gray-500 leading-relaxed card-description">Testez votre maîtrise de git  avec ce quiz sur les bases de technologie Git, la gestion des repo et comment gerer les conflits</p>
+                        <button type="button"
+                        class="mt-6 px-5 py-2.5 rounded-lg text-white text-sm tracking-wider border-none outline-none bg-blue-600 hover:bg-blue-700 active:bg-blue-600"
+                        id="view-btn">View</button>
+                    </div>
+        </div>
+
+        <!-- card 6 -->
+        <div class="bg-white shadow-[0_4px_12px_-5px_rgba(0,0,0,0.4)] w-full h-fit max-w-sm rounded-lg overflow-hidden mx-auto font-[sans-serif] mt-4">
+                <div class="min-h-[256px]">
+                    <img src="/images/algo quiz logo.png" class="w-full" />
+                </div>
+      
+                <div class="p-6 card" >
+                    <h3 class="text-gray-800 text-xl font-bold card-title">Introduction to Algorithms</h3>
+                    <h5 class="mt-4 text-sm text-gray-500 leading-relaxed"> Q : 10 </h5>
+                    <h6 class="mt-4 text-sm text-gray-500 leading-relaxed"> Temps estimé</h6>
+                    <p class="mt-4 text-sm text-gray-500 leading-relaxed card-description">Testez votre maîtrise de Algorithme avec ce quiz, Comment les Algorithms se fonctionne et comment resoudre des Problémes</p>
+                    <button type="button"
+                    class="mt-6 px-5 py-2.5 rounded-lg text-white text-sm tracking-wider border-none outline-none bg-blue-600 hover:bg-blue-700 active:bg-blue-600"
+                    id="view-btn">View</button>
+                </div>
+        </div>
+
     </div>
     
  <!-- Pop up -->
@@ -125,10 +180,9 @@
     class="fixed inset-0 p-4 flex flex-wrap justify-center items-center w-full h-full z-[1000] before:fixed before:inset-0 before:w-full before:h-full before:bg-[rgba(0,0,0,0.5)] overflow-auto font-[sans-serif] hidden" id="pop-up">
     <div class="w-full max-w-lg bg-white shadow-lg rounded-xl p-8 relative">
         <div>
-            <h4 class="text-xl text-gray-800 font-semibold">Introduction to Scratch Programming</h4>
-            <p class="text-sm text-gray-600 mt-4 my-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor auctor
-                arcu,
-                at fermentum dui. Maecenas</p>
+            <h4 class="text-xl text-gray-800 font-semibold popup-title">Introduction to Scratch Programming</h4>
+            <p class="text-sm text-gray-600 mt-4 my-3 popup-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor auctor
+                arcu,at fermentum dui. Maecenas</p>
         </div>
         <!-- radio buttons -->
         <div class="space-x-6 flex max-sm:flex-col max-sm:space-x-0 ">
@@ -174,8 +228,107 @@
         </div>
     </div>
     </div>
- <!-- // Pop up -->
+ <!-- // Pop up //-->
 
+
+     <!-- Comments -->
+     <div class="w-full flex flex-col	justify-center	items-center	mt-5 bg-gray-100  p-6 text-[#333] font-[sans-serif] rounded-md">
+      <h3 class="font-bold text-base">All Reviews(2)</h3>
+      <div class="mt-6 space-y-10">
+        <div class="flex items-start">
+          <img src="https://readymadeui.com/team-2.webp" class="w-12 h-12 rounded-full border-2 border-white" />
+          <div class="ml-3">
+            <h4 class="text-sm font-bold">Ismail Baguni</h4>
+            <div class="flex space-x-1 mt-1">
+              <svg class="w-4 fill-[#facc15]" viewBox="0 0 14 13" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M7 0L9.4687 3.60213L13.6574 4.83688L10.9944 8.29787L11.1145 12.6631L7 11.2L2.8855 12.6631L3.00556 8.29787L0.342604 4.83688L4.5313 3.60213L7 0Z" />
+              </svg>
+              <svg class="w-4 fill-[#facc15]" viewBox="0 0 14 13" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M7 0L9.4687 3.60213L13.6574 4.83688L10.9944 8.29787L11.1145 12.6631L7 11.2L2.8855 12.6631L3.00556 8.29787L0.342604 4.83688L4.5313 3.60213L7 0Z" />
+              </svg>
+              <svg class="w-4 fill-[#facc15]" viewBox="0 0 14 13" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M7 0L9.4687 3.60213L13.6574 4.83688L10.9944 8.29787L11.1145 12.6631L7 11.2L2.8855 12.6631L3.00556 8.29787L0.342604 4.83688L4.5313 3.60213L7 0Z" />
+              </svg>
+              <svg class="w-4 fill-[#CED5D8]" viewBox="0 0 14 13" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M7 0L9.4687 3.60213L13.6574 4.83688L10.9944 8.29787L11.1145 12.6631L7 11.2L2.8855 12.6631L3.00556 8.29787L0.342604 4.83688L4.5313 3.60213L7 0Z" />
+              </svg>
+              <svg class="w-4 fill-[#CED5D8]" viewBox="0 0 14 13" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M7 0L9.4687 3.60213L13.6574 4.83688L10.9944 8.29787L11.1145 12.6631L7 11.2L2.8855 12.6631L3.00556 8.29787L0.342604 4.83688L4.5313 3.60213L7 0Z" />
+              </svg>
+              <p class="text-xs !ml-2 font-semibold">2 mins ago</p>
+            </div>
+            <p class="text-xs mt-3">The service was amazing. I never had to wait that long for my food. The staff was friendly and attentive, and the delivery was impressively prompt.</p>
+          </div>
+        </div>
+        <div class="flex items-start">
+          <img src="https://readymadeui.com/team-1.webp" class="w-12 h-12 rounded-full border-2 border-white" />
+          <div class="ml-3">
+            <h4 class="text-sm font-bold">Mohammed Ayadi</h4>
+            <div class="flex space-x-1 mt-1">
+              <svg class="w-4 fill-[#facc15]" viewBox="0 0 14 13" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M7 0L9.4687 3.60213L13.6574 4.83688L10.9944 8.29787L11.1145 12.6631L7 11.2L2.8855 12.6631L3.00556 8.29787L0.342604 4.83688L4.5313 3.60213L7 0Z" />
+              </svg>
+              <svg class="w-4 fill-[#facc15]" viewBox="0 0 14 13" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M7 0L9.4687 3.60213L13.6574 4.83688L10.9944 8.29787L11.1145 12.6631L7 11.2L2.8855 12.6631L3.00556 8.29787L0.342604 4.83688L4.5313 3.60213L7 0Z" />
+              </svg>
+              <svg class="w-4 fill-[#facc15]" viewBox="0 0 14 13" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M7 0L9.4687 3.60213L13.6574 4.83688L10.9944 8.29787L11.1145 12.6631L7 11.2L2.8855 12.6631L3.00556 8.29787L0.342604 4.83688L4.5313 3.60213L7 0Z" />
+              </svg>
+              <svg class="w-4 fill-[#CED5D8]" viewBox="0 0 14 13" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M7 0L9.4687 3.60213L13.6574 4.83688L10.9944 8.29787L11.1145 12.6631L7 11.2L2.8855 12.6631L3.00556 8.29787L0.342604 4.83688L4.5313 3.60213L7 0Z" />
+              </svg>
+              <svg class="w-4 fill-[#CED5D8]" viewBox="0 0 14 13" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M7 0L9.4687 3.60213L13.6574 4.83688L10.9944 8.29787L11.1145 12.6631L7 11.2L2.8855 12.6631L3.00556 8.29787L0.342604 4.83688L4.5313 3.60213L7 0Z" />
+              </svg>
+              <p class="text-xs !ml-2 font-semibold">30 mins ago</p>
+            </div>
+            <p class="text-xs mt-3">The service was amazing. I never had to wait that long for my food. The staff was friendly and attentive, and the delivery was impressively prompt.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+     <!-- //Comments //-->
+
+     <h1 class="flex justify-center text-7xl	m-4 font-black	max-sm: text-3xl">Top Score</h1>
+<div class="container podium mb-9 font-mono	">
+  <div class="podium__item">
+    <p class="podium__city mb-3">Nizar Bariany</p>
+    <div class="podium__rank second">2</div>
+  </div>
+  <div class="podium__item">
+    <p class="podium__city mb-3"> <img src="/images/me.jpg" style="width: 50px; height: 50px; border-radius: 50%;margin:auto;">Adil Ait Elhoucine</p>
+    <div class="podium__rank first">
+      <svg class="podium__number" viewBox="0 0 27.476 75.03" xmlns="http://www.w3.org/2000/svg">
+      <g transform="matrix(1, 0, 0, 1, 214.957736, -43.117417)">
+        <path class="st8" d="M -198.928 43.419 C -200.528 47.919 -203.528 51.819 -207.828 55.219 C -210.528 57.319 -213.028 58.819 -215.428 60.019 L -215.428 72.819 C -210.328 70.619 -205.628 67.819 -201.628 64.119 L -201.628 117.219 L -187.528 117.219 L -187.528 43.419 L -198.928 43.419 L -198.928 43.419 Z" style="fill: #000;"/>
+      </g>
+    </svg>
+    </div>
+</div>
+  <div class="podium__item">
+    <p class="podium__city mb-3">Swil7 O Tinghir</p>
+    <div class="podium__rank third">3</div>
+  </div>
     <script src="/public/scrip.js"></script>
 </body>
 </html>

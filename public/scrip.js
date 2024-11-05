@@ -11,17 +11,65 @@ function handleClick() {
   }
 }
 
+
 toggleOpen.addEventListener('click', handleClick);
 toggleClose.addEventListener('click', handleClick);
 // end navbar script
 
-var  pop_up_cancel=document.querySelector("#pop-up-cancel");
-var pop_up=document.querySelector("#pop-up");
-var view=document.querySelector("#view-btn");
-console.log(pop_up_cancel);
-pop_up_cancel.addEventListener("click",()=>{
-    pop_up.style.display='none';
+ // pop code start sg da
+const viewButtons = document.querySelectorAll('#view-btn');
+const popup = document.getElementById('pop-up');
+const popupTitle = document.querySelector('.popup-title'); 
+const popupDescription = document.querySelector('.popup-description'); 
+const closepop = document.getElementById('pop-up-cancel'); 
+
+viewButtons.forEach((button, index) => { 
+
+  button.addEventListener('click', () => { 
+    
+    const card = button.closest('.card');
+
+ 
+    let title = card.querySelector('h3').textContent;
+
+    let description = card.querySelector('p').textContent;
+      console.log(description)
+
+    popupTitle.textContent = title; 
+    popupDescription.textContent = description;
+
+
+    popup.classList.remove('hidden'); 
+  });
 });
-view.addEventListener("click",()=>{
-    pop_up.style.display='flex';
+
+// Fermer le popup
+closepop.addEventListener("click",()=>{
+  popup.classList.toggle("hidden");
 })
+
+//animation
+
+
+
+const container = document.querySelector('.container');
+window.onscroll = function() {scrollFunction()};
+let animation= container.animate(
+  [
+    { transform: 'translateY(100%)' }, 
+    { transform: 'translateY(0%)' }
+  ],
+  {
+    duration: 3000
+  }
+);
+function scrollFunction() {
+  if (document.body.scrollTop > 1530|| document.documentElement.scrollTop > 1530) {
+    animation.play();
+  }else{
+    animation.pause();
+  }
+}
+   
+
+

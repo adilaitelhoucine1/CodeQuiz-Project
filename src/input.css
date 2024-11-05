@@ -1,3 +1,65 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+body {
+    font-family: sans-serif;
+  }
+  
+  .container {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+  }
+  
+  .podium__item {
+    width: 200px;
+  }
+  
+  .podium__rank {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 35px;
+    color: #fff;
+  }
+  
+  .podium__city {
+    text-align: center;
+    padding: 0 .5rem;
+  }
+  
+  .podium__number {
+    width: 27px;
+    height: 75px;
+  }
+  
+  .podium .first {
+    min-height: 300px;
+    background: rgb(255,172,37);
+  background: 
+    linear-gradient(333deg, 
+    rgba(255,172,37,1) 0%, 
+    rgba(254,207,51,1) 13%, 
+    rgba(254,224,51,1) 53%, 
+    rgba(255,172,37,1) 100%);
+   
+  }
+  @keyframes podiom {
+     from{
+      width: 0%;
+     }
+     to {
+     width: 100%;
+     }
+  }
+  
+  .podium .second {
+    min-height: 200px;
+    background: blue;
+  }
+  
+  .podium .third {
+    min-height: 100px;
+    background: green;
+  }
+  
