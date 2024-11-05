@@ -44,15 +44,6 @@ body {
     rgba(255,172,37,1) 100%);
    
   }
-  @keyframes podiom {
-     from{
-      width: 0%;
-     }
-     to {
-     width: 100%;
-     }
-  }
-  
   .podium .second {
     min-height: 200px;
     background: blue;
@@ -62,4 +53,5 @@ body {
     min-height: 100px;
     background: green;
   }
+  /** ---------------------------------------*/
   
