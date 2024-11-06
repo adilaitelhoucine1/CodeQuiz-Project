@@ -77,9 +77,10 @@ const answers = document.querySelectorAll(".answer");
         
             Question_count_Int++;
             Question_count.textContent=String(Question_count_Int);
-            if(i>4){
-                window.location.href="www.fb.com"
-            }
+            console.log(Question_count_Int)
+            // if(Question_count_Int>6){
+            //     window.location.href="www.fb.com"
+            // }
         }
       
     });
