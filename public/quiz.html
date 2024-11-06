@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,7 +7,7 @@
   <title>Quiz</title>
   <link rel="stylesheet" href="style.css">
 </head>
-<body >
+<body>
   <header class='flex shadow-md py-4 px-4 sm:px-10 bg-white font-[sans-serif] min-h-[70px] tracking-wide relative z-50 '>
     <div class='flex flex-wrap items-center justify-between gap-5 w-full'>
       <a href="javascript:void(0)"><img src="/images/Quiz.svg" alt="logo" class='w-36 h-16 max-sm:hidden' />
@@ -78,13 +78,13 @@
       </div>
       
       <div class="text-lg font-semibold">
-        Question: <span class="text-blue-600 max-sm:text-center">1/5</span>
+        Question: <span class="text-blue-600 max-sm:text-center" id="Question-count">1</span>/5
       </div>
     </header>
 
     <!-- Question place -->
     <section class="mb-6">
-      <h2 class="text-2xl font-bold mb-4">Quelle est la langue de programmation la plus populaire ?</h2>
+      <h2 class="text-2xl font-bold mb-4" id="Question-input">Quelle est la langue de programmation la plus populaire ?</h2>
       <div class="flex items-center text-gray-500 mb-6 space-x-4">
         <!-- Icon and Type -->
         <div class="flex items-center space-x-1">
@@ -99,44 +99,32 @@
 
       <!-- Answer Options -->
       <div class="flex flex-wrap justify-center gap-6">
-        <button class="answer w-80 border-2 border-gray-300 py-2 px-4 rounded-lg hover:bg-sky-700 hover:text-white transition duration-200">
+        <button class="answer w-80 border-2 border-gray-300 py-2 px-4 rounded-lg hover:bg-sky-700 hover:text-white transition duration-200" id="A1">
           A) C
         </button>
-        <button class="answer w-80 border-2 border-gray-300 py-2 px-4 rounded-lg hover:bg-sky-700 hover:text-white transition duration-200">
+        <button class="answer w-80 border-2 border-gray-300 py-2 px-4 rounded-lg hover:bg-sky-700 hover:text-white transition duration-200" id="A2">
           B) C++
         </button>
-        <button class="answer w-80 border-2 border-gray-300 py-2 px-4 rounded-lg hover:bg-sky-700 hover:text-white transition duration-200">
+        <button class="answer w-80 border-2 border-gray-300 py-2 px-4 rounded-lg hover:bg-sky-700 hover:text-white transition duration-200" id="A3">
           C) JavaScript
         </button>
-        <button class="answer w-80 border-2 border-gray-300 py-2 px-4 rounded-lg hover:bg-sky-700 hover:text-white transition duration-200">
+        <button class="answer w-80 border-2 border-gray-300 py-2 px-4 rounded-lg hover:bg-sky-700 hover:text-white transition duration-200" id="A4">
           D) Java
         </button>
       </div>
     </section>
 
-    <!-- Navigation Buttons -->
+    <!-- pre and newt Buttons -->
     <div class="flex justify-between">
-      <button class="bg-gray-300 text-gray-700 py-2 px-4 rounded-lg hover:bg-gray-400 transition duration-200">
+      <button class="bg-gray-300 text-gray-700 py-2 px-4 rounded-lg hover:bg-gray-400 transition duration-200 invisible	" id="prec-btn">
         Précédent
       </button>
-      <button class="bg-green-500 text-white py-2 px-4 rounded-lg hover:bg-green-600 transition duration-200">
+      <button class="bg-green-500 text-white py-2 px-4 rounded-lg hover:bg-green-600 transition duration-200" id="next-btn">
         Suivant
       </button>
     </div>
   </div>
 </div>
-<script src="/public/scrip.js"></script>
-  <script>
-    // JavaScript to handle answer selection
-    const answers = document.querySelectorAll(".answer");
-    answers.forEach((element) => {
-      element.addEventListener("click", () => {
-        //
-        answers.forEach((e) => e.classList.remove("bg-sky-700", "text-white"));
-        
-        element.classList.add("bg-sky-700", "text-white");
-      });
-    });
-  </script>
+<script src="/public/quiz.js"></script>
 </body>
 </html>
