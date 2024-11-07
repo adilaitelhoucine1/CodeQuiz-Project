@@ -69,14 +69,14 @@
     </div>
 
  
-   <div class="cards flex max-sm:flex flex-wrap gap-1.5	">
+   <div class="cards flex max-sm:flex flex-wrap gap-1.5	" id="quizContainer">
         <!-- card 1 -->
-        <div class="bg-white shadow-[0_4px_12px_-5px_rgba(0,0,0,0.4)] w-full h-fit max-w-sm rounded-lg overflow-hidden mx-auto font-[sans-serif] mt-4">
+        <div class="bg-white shadow-[0_4px_12px_-5px_rgba(0,0,0,0.4)] w-full h-fit max-w-sm rounded-lg overflow-hidden mx-auto font-[sans-serif] mt-4 card">
                 <div class="min-h-[256px]">
                     <img src="/images/htmll quiz logo.png" class="w-full" />
                 </div>
 
-                <div class="p-6 card">
+                <div class="p-6 card" data-id="html-css">
                     <h3 class="text-gray-800 text-xl font-bold card-title">HTML & CSS QUIZ</h3>
                     <h6 class="mt-4 text-sm text-gray-500 leading-relaxed"> Q : 10 </h6>
                     <h5 class="mt-4 text-sm text-gray-500 leading-relaxed"> Temps estimé</h5>
@@ -88,12 +88,12 @@
         </div>
 
         <!-- card 2 -->
-        <div class="bg-white shadow-[0_4px_12px_-5px_rgba(0,0,0,0.4)] w-full h-fit max-w-sm rounded-lg overflow-hidden mx-auto font-[sans-serif] mt-4">
+        <div class="bg-white shadow-[0_4px_12px_-5px_rgba(0,0,0,0.4)] w-full h-fit max-w-sm rounded-lg overflow-hidden mx-auto font-[sans-serif] mt-4 card">
             <div class="min-h-[256px]">
                 <img src="/images/js quiz.png" class="w-full" />
             </div>
 
-            <div class="p-6 card">
+            <div class="p-6 card" data-id="javascript">
                 <h3 class="text-gray-800 text-xl font-bold card-title">JavaScript QUIZ</h3>
                 <h5 class="mt-4 text-sm text-gray-500 leading-relaxed"> Q : 10 </h5>
                 <h6 class="mt-4 text-sm text-gray-500 leading-relaxed"> Temps estimé</h6>
@@ -105,12 +105,12 @@
        </div>
     
         <!-- card 3 -->
-        <div class="bg-white shadow-[0_4px_12px_-5px_rgba(0,0,0,0.4)] w-full h-fit max-w-sm rounded-lg overflow-hidden mx-auto font-[sans-serif] mt-4">
+        <div class="bg-white shadow-[0_4px_12px_-5px_rgba(0,0,0,0.4)] w-full h-fit max-w-sm rounded-lg overflow-hidden mx-auto font-[sans-serif] mt-4 card">
             <div class="min-h-[256px]">
                 <img src="/images/sql logo.png" class="w-full" />
             </div>
 
-            <div class="p-6 card" >
+            <div class="p-6 card" data-id="database-sql">
                 <h3 class="text-gray-800 text-xl font-bold card-title">DataBase & SQL QUIZ</h3>
                 <h5 class="mt-4 text-sm text-gray-500 leading-relaxed"> Q : 10 </h5>
                 <h6 class="mt-4 text-sm text-gray-500 leading-relaxed"> Temps estimé</h6>
@@ -123,12 +123,12 @@
         
 
          <!-- card 4 -->
-         <div class="bg-white shadow-[0_4px_12px_-5px_rgba(0,0,0,0.4)] w-full h-fit max-w-sm rounded-lg overflow-hidden mx-auto font-[sans-serif] mt-4">
+         <div class="bg-white shadow-[0_4px_12px_-5px_rgba(0,0,0,0.4)] w-full h-fit max-w-sm rounded-lg overflow-hidden mx-auto font-[sans-serif] mt-4 card">
           <div class="min-h-[256px]">
               <img src="/images/java quiz.png" class="w-full" />
           </div>
 
-          <div class="p-6 card" >
+          <div class="p-6 card" data-id="java">
               <h3 class="text-gray-800 text-xl font-bold card-title">Java</h3>
               <h5 class="mt-4 text-sm text-gray-500 leading-relaxed"> Q : 10 </h5>
               <h6 class="mt-4 text-sm text-gray-500 leading-relaxed"> Temps estimé</h6>
@@ -140,12 +140,12 @@
          </div>
 
          <!-- card 5 -->
-        <div class="bg-white shadow-[0_4px_12px_-5px_rgba(0,0,0,0.4)] w-full h-fit max-w-sm rounded-lg overflow-hidden mx-auto font-[sans-serif] mt-4">
+        <div class="bg-white shadow-[0_4px_12px_-5px_rgba(0,0,0,0.4)] w-full h-fit max-w-sm rounded-lg overflow-hidden mx-auto font-[sans-serif] mt-4 card">
                     <div class="min-h-[256px]">
                         <img src="/images/git quiz.png" class="w-full" />
                     </div>
           
-                    <div class="p-6 card" >
+                    <div class="p-6 card" data-id="github">
                         <h3 class="text-gray-800 text-xl font-bold card-title">Introduction to Github</h3>
                         <h5 class="mt-4 text-sm text-gray-500 leading-relaxed"> Q : 10 </h5>
                         <h6 class="mt-4 text-sm text-gray-500 leading-relaxed"> Temps estimé</h6>
@@ -157,12 +157,12 @@
         </div>
 
         <!-- card 6 -->
-        <div class="bg-white shadow-[0_4px_12px_-5px_rgba(0,0,0,0.4)] w-full h-fit max-w-sm rounded-lg overflow-hidden mx-auto font-[sans-serif] mt-4">
+        <div class="bg-white shadow-[0_4px_12px_-5px_rgba(0,0,0,0.4)] w-full h-fit max-w-sm rounded-lg overflow-hidden mx-auto font-[sans-serif] mt-4 card">
                 <div class="min-h-[256px]">
                     <img src="/images/algo quiz logo.png" class="w-full" />
                 </div>
       
-                <div class="p-6 card" >
+                <div class="p-6 card" data-id="Algorithme">
                     <h3 class="text-gray-800 text-xl font-bold card-title">Introduction to Algorithms</h3>
                     <h5 class="mt-4 text-sm text-gray-500 leading-relaxed"> Q : 10 </h5>
                     <h6 class="mt-4 text-sm text-gray-500 leading-relaxed"> Temps estimé</h6>
@@ -330,5 +330,6 @@
     <div class="podium__rank third">3</div>
   </div>
     <script src="/public/scrip.js"></script>
+  
 </body>
 </html>

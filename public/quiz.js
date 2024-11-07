@@ -24,7 +24,7 @@ const answers = document.querySelectorAll(".answer");
     Question_input=document.querySelector("#Question-input");
     next_btn=document.querySelector("#next-btn");   
     Question_count=document.querySelector("#Question-count");  
-    console.log(Question_count)
+
     Question_count_Int=parseInt(document.querySelector("#Question-count").textContent); 
 
  
@@ -32,55 +32,56 @@ const answers = document.querySelectorAll(".answer");
     let a2=document.querySelector("#A2");
     let a3=document.querySelector("#A3");
     let a4=document.querySelector("#A4");
-    let allQuestions=[
-        {
-            body:"C'est le meilleur Joueur au Nador",
-            first:"Adil",
-            second:"Salah",
-            Third:"Abdlatif",
-            fourth:"Aymane",
-        },
-        {
-            body:"C'est la meilleure ville dans le maroc",
-            first:"Tinghir",
-            second:"Ouarzazate",
-            Third:"Nador",
-            fourth:"Awdyat",
-        },
-        {
-            body:"C'est le meilleur pays au monde",
-            first:"Algerie",
-            second:"senegal",
-            Third:"Côte d'Ivoire",
-            fourth:"Cammeron",
-        },
-        {
-            body:"C'est Quoi  le meilleur bootcamp dans le maroc",
-            first:"Youcode",
-            second:"1337",
-            Third:"Zone01",
-            fourth:"SoliCode",
-        }
-    ];
     let i=0;
-    
-    next_btn.addEventListener("click",()=>{
-        if(i<allQuestions.length){
+
+        // if(i==0 ){
           
-            Question_input.textContent=allQuestions[i].body;
-            a1.textContent=allQuestions[i].first;
-            a2.textContent=allQuestions[i].second;
-            a3.textContent=allQuestions[i].Third;
-            a4.textContent=allQuestions[i].fourth;
-            i++;
+        //     Question_input.textContent=quizzes[i].questions[j].text;
+        //     a1.textContent=quizzes[i].questions[j].options[j];
+        //     a2.textContent=quizzes[i].questions[j].options[1];
+        //     a3.textContent=quizzes[i].questions[j].options[2];
+        //     a4.textContent=
+        //     i++
         
-        
-            Question_count_Int++;
-            Question_count.textContent=String(Question_count_Int);
-            console.log(Question_count_Int)
-            // if(Question_count_Int>6){
-            //     window.location.href="www.fb.com"
-            // }
-        }
+ 
+        // }
       
-    });
+
+
+const urlParams = new URLSearchParams(window.location.search);
+const quizId = urlParams.get('id');
+if (quizId)  
+    GetQuizbyID(quizId);    
+
+
+function GetQuizbyID(quizId) {
+    const quiz = quizzes.find(q => q.title.toLowerCase() === quizId.toLowerCase());
+    console.log(quiz)
+    if (quiz) {
+       // let currentQuestionIndex = 0;
+      var i=0
+      
+        next_btn.addEventListener("click",()=>{
+            if(i<quiz.questions.length){
+                Question_input.textContent = quiz.questions[i].text;
+                a1.textContent=quiz.questions[i].options[0];
+                a2.textContent=quiz.questions[i].options[1];
+                a3.textContent=quiz.questions[i].options[2];
+                a4.textContent=quiz.questions[i].options[3];
+
+                console.log(quiz.questions[i].options)
+                i++
+            }
+        })
+        
+      
+           
+           
+           // console.log(quiz.questions[0]);
+            
+
+            
+        
+      
+}
+}
