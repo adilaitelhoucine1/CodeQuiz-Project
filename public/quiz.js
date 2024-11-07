@@ -1,4 +1,4 @@
-    // navbar script
+// navbar script
 var toggleOpen = document.getElementById('toggleOpen');
 var toggleClose = document.getElementById('toggleClose');
 var collapseMenu = document.getElementById('collapseMenu');
@@ -10,6 +10,10 @@ function handleClick() {
     collapseMenu.style.display = 'block';
   }
 }
+
+
+toggleOpen.addEventListener('click', handleClick);
+toggleClose.addEventListener('click', handleClick);
 // JavaScript to handle answer selection
 const answers = document.querySelectorAll(".answer");
   answers.forEach((element) => {
@@ -31,7 +35,9 @@ const answers = document.querySelectorAll(".answer");
 const reponse_text=document.querySelector("#reponse-text");    
 const TrurFalse_content=document.querySelector("#TrurFalse-content");    
 const Qcm_content=document.querySelector("#Qcm-content");    
-const question_type=document.querySelector("#question-type");    
+const question_type=document.querySelector("#question-type");      
+let progress = 0;
+
  
 let a1=document.querySelector("#A1");
 let a2=document.querySelector("#A2");
@@ -47,7 +53,6 @@ if (quizId)
 
 function GetQuizbyID(quizId) {
     const quiz = quizzes.find(q => q.title.toLowerCase() === quizId.toLowerCase());
-    console.log(quiz)
     if (quiz) {
       var i=1;
                Question_input.textContent = quiz.questions[0].text;
@@ -97,9 +102,23 @@ function GetQuizbyID(quizId) {
             }else{
               window.alert("You finished");
             }
-          
+            if (progress < 100) {
+              progress += 100/(quiz.questions.length-1); 
+  
+              const progressBar = document.getElementById("progressBar");
+              progressBar.animate(
+                  [
+                      { width: progress+ '%' },
+                      { width: progress+ '%' }
+                  ],
+                  {
+                      duration: 300, 
+                      fill: "forwards" 
+                  }
+              );
+          }
         })
-        let  timeLeft = 60;
+        let  timeLeft = 10*quiz.questions.length;
         const timerInterval = setInterval(() => {
           if (timeLeft <= 0) {
               clearInterval(timerInterval);

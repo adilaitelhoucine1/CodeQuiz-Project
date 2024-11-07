@@ -66,15 +66,23 @@
 
 
   <div class="bg-white shadow-lg rounded-lg p-6 max-w-3xl w-full">
-    
-    <header class="flex justify-between items-center mb-6 border-b-4 pb-4">
+
+    <div class="progress-container" style="width: 100%;
+    background-color: #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+    margin: auto;">
+      <div class="progress-bar" id="progressBar" style="height: 20px;width: 0;background-color: #4caf50;border-radius: 8px;"></div>
+  </div>
+
+    <header class="flex justify-between items-center mt-5 mb-6 border-b-4 pb-4">
      
       <div class="text-lg font-semibold">
         Score: <span class="text-green-600 max-sm:text-center">0</span>
       </div>
 
       <div class="text-lg font-semibold">
-        Temps restant: <span id="timer" class="text-red-600">60s</span>
+        Temps restant: <span id="timer" class="text-red-600"></span>
       </div>
       
       <div class="text-lg font-semibold">
