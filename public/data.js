@@ -14,17 +14,17 @@
           },
           {
             "question_id": 2,
-            "text": "Que retourne `typeof 5` en JavaScript?",
+            "text": "Quel est le résultat de l'expression suivante en JavaScript consloe.log(type of '123')",
             "type": "multiple_choice",
             "options": ["string", "undefined", "number", "boolean"],
             "correct_answer": "number"
           },
           {
             "question_id": 3,
-            "text": "Que retourne `typeof True en JavaScript?",
+            "text": "Quel est le résultat de l'expression suivante en JavaScript consloe.log(5>5)",
             "type": "multiple_choice",
-            "options": ["string", "undefined", "number", "boolean"],
-            "correct_answer": "boolean"
+            "options": ["NaN", "undefined", "False", "True"],
+            "correct_answer": "false"
           },
           {
             "question_id": 4,
@@ -32,6 +32,13 @@
             "type": "multiple_choice",
             "options": ["3", "'51'", "15", "'3'"],
             "correct_answer": "'51'"
+          },
+          {
+            "question_id": 5,
+            "text": "Quelle méthode JavaScript est utilisée pour convertir une chaîne de caractères en majuscules ?",
+            "type": "multiple_choice",
+            "options": ["toUpperCase()", "toLowerCase()", "charAt()", "slice()"],
+            "correct_answer": "toUpperCase()"
           },
         //   {
         //     "question_id": 3,
@@ -43,7 +50,7 @@
       },
       {
         "id": 2,
-        "title": "Quiz sur le HTML",
+        "title": "html-css",
         "description": "Découvrez vos connaissances en HTML.",
         "questions": [
           {
