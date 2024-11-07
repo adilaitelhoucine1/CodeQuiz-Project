@@ -74,7 +74,7 @@
       </div>
 
       <div class="text-lg font-semibold">
-        Temps restant: <span id="timer" class="text-red-600">30s</span>
+        Temps restant: <span id="timer" class="text-red-600">60s</span>
       </div>
       
       <div class="text-lg font-semibold">
@@ -91,14 +91,13 @@
           <svg class="w-5 h-5 text-blue-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l4-4 4 4m0 6l-4 4-4-4" />
           </svg>
-          <span>Choix Multiple</span>
+          <span id="question-type">Choix Multiple</span>
         </div>
-        <span>|</span>
-        <span>Points: <span class="font-semibold">5</span></span>
       </div>
 
       <!-- Answer Options -->
-      <div class="flex flex-wrap justify-center gap-6">
+       <!-- Qcm -->
+      <div class="flex flex-wrap justify-center gap-6 hidden" id="Qcm-content">
         <button class="answer w-80 border-2 border-gray-300 py-2 px-4 rounded-lg hover:bg-sky-700 hover:text-white transition duration-200" id="A1">
        
         </button>
@@ -112,7 +111,31 @@
 
         </button>
       </div>
-    </section>
+    <!-- // Qcm //  -->
+      <!-- trut false -->
+    <div class="flex flex-wrap justify-center gap-6  hidden" id="TrurFalse-content">
+      <button class="answer w-80 border-2 border-gray-300 py-2 px-4 rounded-lg hover:bg-sky-700 hover:text-white transition duration-200" id="A1">
+        vrai
+      </button>
+      <button class="answer w-80 border-2 border-gray-300 py-2 px-4 rounded-lg hover:bg-sky-700 hover:text-white transition duration-200" id="A2">
+        Faux
+      </button>
+
+    </div>
+    <!--// trut false //-->
+
+    <!-- Réponse Textuelle -->
+
+    <div class="flex flex-col justify-center max-w-lg mx-auto px-4 space-y-6 font-[sans-serif] text-[#333] hidden" id="reponse-text">
+      <div>
+        <input type='text' placeholder='Your Answer'
+          class="px-4 py-2.5 text-lg rounded-md bg-white border border-gray-400 w-full outline-blue-500" />
+      </div>
+    </div>
+     <!-- // Réponse Textuelle //-->
+
+
+</section>
 
     <!-- pre and newt Buttons -->
     <div class="flex justify-between">

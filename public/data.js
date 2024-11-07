@@ -5,7 +5,7 @@
         "title": "javascript",
         "description": "Testez vos connaissances en JavaScript.",
         "questions": [
-          {
+        {
             "question_id": 1,
             "text": "Que retourne `typeof NaN` en JavaScript?",
             "type": "multiple_choice",
@@ -15,16 +15,8 @@
           {
             "question_id": 2,
             "text": "Quel est le résultat de l'expression suivante en JavaScript consloe.log(type of '123')",
-            "type": "multiple_choice",
-            "options": ["string", "undefined", "number", "boolean"],
+            "type": "text-input", 
             "correct_answer": "number"
-          },
-          {
-            "question_id": 3,
-            "text": "Quel est le résultat de l'expression suivante en JavaScript consloe.log(5>5)",
-            "type": "multiple_choice",
-            "options": ["NaN", "undefined", "False", "True"],
-            "correct_answer": "false"
           },
           {
             "question_id": 4,
@@ -40,12 +32,12 @@
             "options": ["toUpperCase()", "toLowerCase()", "charAt()", "slice()"],
             "correct_answer": "toUpperCase()"
           },
-        //   {
-        //     "question_id": 3,
-        //     "text": "Vrai ou Faux: `null === undefined` retourne `true`.",
-        //     "type": "true_false",
-        //     "correct_answer": false
-        //   }
+          {
+            "question_id": 2,
+            "text": "Vrai ou Faux: `null === undefined` retourne `true`.",
+            "type": "true_false",
+            "correct_answer": false
+          }
         ]
       },
       {
