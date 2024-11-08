@@ -44,6 +44,7 @@ let a2=document.querySelector("#A2");
 let a3=document.querySelector("#A3");
 let a4=document.querySelector("#A4");
 let qcm_btn=document.querySelectorAll(".qcm-btn");
+let multiple_btn=document.querySelectorAll(".multiple-btn");
 let vrai_btn=document.querySelector("#vrai-btn");
 let faux_btn=document.querySelector("#faux-btn");
 
@@ -67,17 +68,17 @@ function GetQuizbyID(quizId) {
     const quiz = quizzes.find(q => q.title.toLowerCase() === quizId.toLowerCase());
   
     if (quiz) {
-      var i=1;
-               Question_input.textContent = quiz.questions[0].text;
-                a1.textContent=quiz.questions[0].options[0];
-                a2.textContent=quiz.questions[0].options[1];
-                a3.textContent=quiz.questions[0].options[2];
-                a4.textContent=quiz.questions[0].options[3];
-                Question_count_Int++;
-                Qcm_content.style.display='block';
-                TrurFalse_content.style.display='none';
-                reponse_text.style.display='none';
-                question_type.textContent='QCM (Questions à Choix Multiples)';
+      var i=0;
+              //  Question_input.textContent = quiz.questions[0].text;
+              //   a1.textContent=quiz.questions[0].options[0];
+              //   a2.textContent=quiz.questions[0].options[1];
+              //   a3.textContent=quiz.questions[0].options[2];
+              //   a4.textContent=quiz.questions[0].options[3];
+              //   Question_count_Int++;
+              //   Qcm_content.style.display='block';
+              //   TrurFalse_content.style.display='none';
+              //   reponse_text.style.display='none';
+              //   question_type.textContent='QCM (Questions à Choix Multiples)';
                 
                 
         next_btn.addEventListener("click",()=>{
@@ -93,17 +94,15 @@ function GetQuizbyID(quizId) {
                  const correct =quiz.questions[i].correct_answer;
                  qcm_btn.forEach((e) => 
                   e.addEventListener("click",()=>{
-                    
+                    const otherButton = e.nextElementSibling || e.previousElementSibling;
                     if(e.textContent.trim().toLowerCase() == correct.trim().toLowerCase()){
-                      e.style.backgroundColor='green';
-                     vrai_btn.style.visibility='hidden';
+                     e.style.backgroundColor='green';
+                     otherButton.style.visibility='hidden';
                      score_int=score_int+100;
                      score.textContent=score_int;
                     }else{
-                      e.style.backgroundColor = 'red'; 
-                      const otherButton = e.nextElementSibling || e.previousElementSibling;
+                      e.style.backgroundColor = 'red';                     
                       otherButton.style.visibility = 'hidden'; 
-                      otherButton.style.backgroundColor = 'red';
                      
                     }
                   })
@@ -111,6 +110,11 @@ function GetQuizbyID(quizId) {
                 
                 }
                 if(quiz.questions[i].type === 'multiple_choice'){
+                  multiple_btn.forEach((e) => {
+                    e.style.backgroundColor = 'white'; 
+                    e.style.color = 'black'; 
+                });
+
                   Qcm_content.style.display='block';
                   TrurFalse_content.style.display='none';
                   reponse_text.style.display='none';
@@ -119,6 +123,25 @@ function GetQuizbyID(quizId) {
                   a2.textContent=quiz.questions[i].options[1];
                   a3.textContent=quiz.questions[i].options[2];
                   a4.textContent=quiz.questions[i].options[3];
+                  const correct =quiz.questions[i].correct_answer;
+                  multiple_btn.forEach((e) => 
+                    e.addEventListener("click",()=>{
+                      
+
+                      //const otherButton = e.nextElementSibling || e.previousElementSibling;
+                      if(e.textContent.trim().toLowerCase() == correct.trim().toLowerCase()){
+
+                        e.style.backgroundColor='green';
+                       score_int=score_int+100;
+                       score.textContent=score_int;
+                 
+                      }else{
+                        e.style.backgroundColor = 'red';                     
+                       // otherButton.style.visibility = 'hidden'; 
+                     
+                      }
+                    })
+                  );
                   
                  
                  }
