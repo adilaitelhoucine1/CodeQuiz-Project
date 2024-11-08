@@ -47,10 +47,37 @@
         "questions": [
           {
             "question_id": 1,
-            "text": "Quel est l'élément HTML utilisé pour afficher une image?",
-            "type": "text",
-            "correct_answer": "<img>"
-          }
+            "text": "Quel est le but de l'élément <header> en HTML?",
+            "type": "multiple_choice",
+            "options": ["Contient le contenu principal de la page", "Définit une barre de navigation", "Représente l'en-tête d'une section", "Ajoute des métadonnées à la page"],
+            "correct_answer": "Représente l'en-tête d'une section"
+        },
+        {
+            "question_id": 2,
+            "text": "Que signifie CSS?",
+            "type": "text-input",
+            "correct_answer": "Cascading Style Sheets"
+        },
+        {
+            "question_id": 3,
+            "text": "Quel attribut HTML est utilisé pour lier un fichier CSS externe?",
+            "type": "multiple_choice",
+            "options": ["<link>", "<style>", "<css>", "<stylesheet>"],
+            "correct_answer": "<link>"
+        },
+        {
+            "question_id": 4,
+            "text": "Quel est l'effet de la propriété CSS 'display: none;'?",
+            "type": "multiple_choice",
+            "options": ["Cache l'élément mais réserve son espace", "Supprime l'élément sans affecter le flux de la page", "Cache l'élément et ne réserve pas d'espace", "Réduit l'opacité de l'élément à zéro"],
+            "correct_answer": "Cache l'élément et ne réserve pas d'espace"
+        },
+        {
+            "question_id": 5,
+            "text": "Vrai ou Faux: En CSS, 'position: absolute' positionne l'élément par rapport à son conteneur parent le plus proche qui a une position définie.",
+            "type": "true_false",
+            "correct_answer": "vrai"
+        }
         ]
       }
     ]

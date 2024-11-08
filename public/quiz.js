@@ -178,7 +178,7 @@ function GetQuizbyID(quizId) {
               window.alert("You finished");
             }
             if (progress < 100) {
-              progress += 100/(quiz.questions.length-1); 
+              progress += 100/(quiz.questions.length  ); 
           // bar animation  
               const progressBar = document.getElementById("progressBar");
               progressBar.animate(
