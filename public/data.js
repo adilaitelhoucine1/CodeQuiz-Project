@@ -1,45 +1,51 @@
 
    const quizzes= [
-      {
-        "id": 1,
-        "title": "javascript",
-        "description": "Testez vos connaissances en JavaScript.",
-        "questions": [
-        {
-            "question_id": 1,
-            "text": "Que retourne `typeof NaN` en JavaScript?",
-            "type": "multiple_choice",
-            "options": ["string", "undefined", "number", "boolean"],
-            "correct_answer": "number"
+    {
+      "id": 1,
+      "title": "javascript",
+      "description": "Testez vos connaissances en JavaScript.",
+      "questions": [
+          {
+              "question_id": 1,
+              "text": "Que retourne `typeof NaN` en JavaScript?",
+              "type": "multiple_choice",
+              "options": ["string", "undefined", "number", "boolean"],
+              "correct_answer": "number",
+              "explication": "La fonction `typeof NaN` retourne 'number' parce que NaN est considéré comme un type numérique en JavaScript, même s'il représente une valeur non-numérique."
           },
           {
-            "question_id": 2,
-            "text": "Quel est le résultat de l'expression suivante en JavaScript consloe.log(type of '123')",
-            "type": "text-input", 
-            "correct_answer": "string"
+              "question_id": 2,
+              "text": "Quel est le résultat de l'expression suivante en JavaScript consloe.log(type of '123')",
+              "type": "text-input",
+              "correct_answer": "string",
+              "explication": "La fonction `typeof` appliquée à une chaîne, comme `'123'`, retourne 'string' car le contenu est une chaîne de caractères."
           },
           {
-            "question_id": 3,
-            "text": "Quel est le résultat de l'expression suivante en JavaScript '5' + 1 - 2",
-            "type": "multiple_choice",
-            "options": ["3", "'51'", "15", "'3'"],
-            "correct_answer": "'51'"
+              "question_id": 3,
+              "text": "Quel est le résultat de l'expression suivante en JavaScript '5' + 1 - 2",
+              "type": "multiple_choice",
+              "options": ["3", "'51'", "15", "'3'"],
+              "correct_answer": "'51'",
+              "explication": "En JavaScript, `'5' + 1` effectue une concaténation, donnant `'51'`. Ensuite, `'51' - 2` convertit `'51'` en nombre, résultant en 49. La réponse correcte est donc '51' après la première étape."
           },
           {
-            "question_id": 4,
-            "text": "Quelle méthode JavaScript est utilisée pour convertir une chaîne de caractères en majuscules ?",
-            "type": "multiple_choice",
-            "options": ["toUpperCase()", "toLowerCase()", "charAt()", "slice()"],
-            "correct_answer": "toUpperCase()"
+              "question_id": 4,
+              "text": "Quelle méthode JavaScript est utilisée pour convertir une chaîne de caractères en majuscules ?",
+              "type": "multiple_choice",
+              "options": ["toUpperCase()", "toLowerCase()", "charAt()", "slice()"],
+              "correct_answer": "toUpperCase()",
+              "explication": "La méthode `toUpperCase()` en JavaScript transforme toutes les lettres d'une chaîne de caractères en majuscules, ce qui est utile pour uniformiser les données textuelles."
           },
           {
-            "question_id": 5,
-            "text": "Vrai ou Faux: `null === undefined` retourne `true`.",
-            "type": "true_false",
-            "correct_answer": "faux"
+              "question_id": 5,
+              "text": "Vrai ou Faux: `null === undefined` retourne `true`.",
+              "type": "true_false",
+              "correct_answer": "faux",
+              "explication": "`null === undefined` retourne `false` car `null` et `undefined` sont deux types différents et `===` vérifie à la fois le type et la valeur."
           }
-        ]
-      },
+      ]
+  }
+  ,
       {
         "id": 2,
         "title": "html-css",
@@ -79,6 +85,46 @@
             "correct_answer": "vrai"
         }
         ]
+      },
+      {
+        "id": 3,
+        "title": "database-sql",
+        "description": "Testez vos connaissances en  DataBase & SQL QUIZ.",
+        "questions": [
+          {
+              "question_id": 1,
+              "text": "Quelle commande SQL est utilisée pour extraire des données d'une base de données?",
+              "type": "multiple_choice",
+              "options": ["INSERT", "UPDATE", "SELECT", "DELETE"],
+              "correct_answer": "SELECT"
+          },
+          {
+              "question_id": 2,
+              "text": "Que signifie SQL?",
+              "type": "text-input",
+              "correct_answer": "Structured Query Language"
+          },
+          {
+              "question_id": 3,
+              "text": "Quel mot-clé SQL est utilisé pour trier les résultats?",
+              "type": "multiple_choice",
+              "options": ["ORDER BY", "GROUP BY", "SORT BY", "RANK BY"],
+              "correct_answer": "ORDER BY"
+          },
+          {
+              "question_id": 4,
+              "text": "Laquelle de ces commandes est utilisée pour ajouter une nouvelle colonne dans une table SQL?",
+              "type": "multiple_choice",
+              "options": ["INSERT", "ADD COLUMN", "UPDATE COLUMN", "ALTER TABLE"],
+              "correct_answer": "ALTER TABLE"
+          },
+          {
+              "question_id": 5,
+              "text": "Vrai ou Faux: La commande SQL 'DROP TABLE' supprime toutes les lignes d'une table sans supprimer la table elle-même.",
+              "type": "true_false",
+              "correct_answer": "faux"
+          }
+      ]
       }
     ]
 

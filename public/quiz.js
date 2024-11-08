@@ -47,6 +47,8 @@ let qcm_btn=document.querySelectorAll(".qcm-btn");
 let multiple_btn=document.querySelectorAll(".multiple-btn");
 let vrai_btn=document.querySelector("#vrai-btn");
 let faux_btn=document.querySelector("#faux-btn");
+let explication=document.querySelector("#explication");
+
 
 
 let text_input_user=document.getElementById("text-input-user");
@@ -80,9 +82,11 @@ function GetQuizbyID(quizId) {
               //   reponse_text.style.display='none';
               //   question_type.textContent='QCM (Questions à Choix Multiples)';
                 
-                
+              //pour initializer la 1ere interface
+              next_btn.textContent="Démarrer Maintenant";
+              
         next_btn.addEventListener("click",()=>{
-         
+          next_btn.textContent="Suivant";
          
             if(i<quiz.questions.length){
                 Question_input.textContent = quiz.questions[i].text;
@@ -123,6 +127,7 @@ function GetQuizbyID(quizId) {
                   a2.textContent=quiz.questions[i].options[1];
                   a3.textContent=quiz.questions[i].options[2];
                   a4.textContent=quiz.questions[i].options[3];
+                  
                   const correct =quiz.questions[i].correct_answer;
                   multiple_btn.forEach((e) => 
                     e.addEventListener("click",()=>{
@@ -134,11 +139,12 @@ function GetQuizbyID(quizId) {
                         e.style.backgroundColor='green';
                        score_int=score_int+100;
                        score.textContent=score_int;
+                       
                  
                       }else{
                         e.style.backgroundColor = 'red';                     
                        // otherButton.style.visibility = 'hidden'; 
-                     
+                       explication.textContent=quiz.questions[i].explication;
                       }
                     })
                   );
@@ -161,21 +167,17 @@ function GetQuizbyID(quizId) {
                     if (userAnswer.value.trim() === correctAnswer) {
                       score_int=score_int+100;
                      score.textContent=score_int;
-                
-                      
+                                      
                     }
                 });
                  
-                 
                  }
-
-               
-                
+            
                 Question_count.textContent=Question_count_Int;
                 Question_count_Int++;
                 i++
             }else{
-              window.alert("You finished");
+              window.location.href="/public/score.html";
             }
             if (progress < 100) {
               progress += 100/(quiz.questions.length  ); 
@@ -194,11 +196,12 @@ function GetQuizbyID(quizId) {
           }
         })
         // timer
-        let  timeLeft = 10*quiz.questions.length;
+        let  timeLeft = 15*quiz.questions.length;
         const timerInterval = setInterval(() => {
           if (timeLeft <= 0) {
               clearInterval(timerInterval);
               timerElement.textContent = "Temps écoulé!";
+              window.location.href="/public/score.html";
           } else {
               timerElement.textContent = `${timeLeft} s`;
               timeLeft--;
