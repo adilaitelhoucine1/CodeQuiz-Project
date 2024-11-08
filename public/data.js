@@ -16,27 +16,27 @@
             "question_id": 2,
             "text": "Quel est le résultat de l'expression suivante en JavaScript consloe.log(type of '123')",
             "type": "text-input", 
-            "correct_answer": "number"
+            "correct_answer": "string"
           },
           {
-            "question_id": 4,
+            "question_id": 3,
             "text": "Quel est le résultat de l'expression suivante en JavaScript '5' + 1 - 2",
             "type": "multiple_choice",
             "options": ["3", "'51'", "15", "'3'"],
             "correct_answer": "'51'"
           },
           {
-            "question_id": 5,
+            "question_id": 4,
             "text": "Quelle méthode JavaScript est utilisée pour convertir une chaîne de caractères en majuscules ?",
             "type": "multiple_choice",
             "options": ["toUpperCase()", "toLowerCase()", "charAt()", "slice()"],
             "correct_answer": "toUpperCase()"
           },
           {
-            "question_id": 2,
+            "question_id": 5,
             "text": "Vrai ou Faux: `null === undefined` retourne `true`.",
             "type": "true_false",
-            "correct_answer": false
+            "correct_answer": "faux"
           }
         ]
       },

@@ -65,7 +65,7 @@
  <div class="bg-gray-100 font-sans min-h-screen flex items-center justify-center">
 
 
-  <div class="bg-white shadow-lg rounded-lg p-6 max-w-3xl w-full">
+  <div class="bg-white shadow-lg rounded-lg p-6 max-w-3xl w-full " id="quiz-container">
 
     <div class="progress-container" style="width: 100%;
     background-color: #e0e0e0;
@@ -78,7 +78,7 @@
     <header class="flex justify-between items-center mt-5 mb-6 border-b-4 pb-4">
      
       <div class="text-lg font-semibold">
-        Score: <span class="text-green-600 max-sm:text-center">0</span>
+        Score: <span class="text-green-600 max-sm:text-center" id="score">0</span>
       </div>
 
       <div class="text-lg font-semibold">
@@ -122,10 +122,10 @@
     <!-- // Qcm //  -->
       <!-- trut false -->
     <div class="flex flex-wrap justify-center gap-6  hidden" id="TrurFalse-content">
-      <button class="answer w-80 border-2 border-gray-300 py-2 px-4 rounded-lg hover:bg-sky-700 hover:text-white transition duration-200" id="A1">
+      <button class="qcm-btn answer w-80 border-2 border-gray-300 py-2 px-4 rounded-lg hover:bg-sky-700 hover:text-white transition duration-200" id="vrai-btn">
         vrai
       </button>
-      <button class="answer w-80 border-2 border-gray-300 py-2 px-4 rounded-lg hover:bg-sky-700 hover:text-white transition duration-200" id="A2">
+      <button class="qcm-btn answer w-80 border-2 border-gray-300 py-2 px-4 rounded-lg hover:bg-sky-700 hover:text-white transition duration-200" id="faux-btn">
         Faux
       </button>
 
@@ -137,7 +137,7 @@
     <div class="flex flex-col justify-center max-w-lg mx-auto px-4 space-y-6 font-[sans-serif] text-[#333] hidden" id="reponse-text">
       <div>
         <input type='text' placeholder='Your Answer'
-          class="px-4 py-2.5 text-lg rounded-md bg-white border border-gray-400 w-full outline-blue-500" />
+          class="px-4 py-2.5 text-lg rounded-md bg-white border border-gray-400 w-full outline-blue-500"  id="text-input-user"/>
       </div>
     </div>
      <!-- // Réponse Textuelle //-->

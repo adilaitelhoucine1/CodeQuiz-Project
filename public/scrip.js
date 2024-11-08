@@ -25,7 +25,7 @@ const closepop = document.getElementById('pop-up-cancel');
 
 // viewButtons.forEach((button, index) => { 
 
-//   button.addEventListener('click', () => { 
+//   button.addEventList.ener('click', () => { 
     
 //     const card = button.closest('.card');
 

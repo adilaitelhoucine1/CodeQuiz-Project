@@ -38,11 +38,23 @@ const Qcm_content=document.querySelector("#Qcm-content");
 const question_type=document.querySelector("#question-type");      
 let progress = 0;
 
- 
+//let quiz_container=document.getElementById("quiz-container"); corect answer effects
 let a1=document.querySelector("#A1");
 let a2=document.querySelector("#A2");
 let a3=document.querySelector("#A3");
 let a4=document.querySelector("#A4");
+let qcm_btn=document.querySelectorAll(".qcm-btn");
+let vrai_btn=document.querySelector("#vrai-btn");
+let faux_btn=document.querySelector("#faux-btn");
+
+
+let text_input_user=document.getElementById("text-input-user");
+let score=document.getElementById("score");
+let score_int=parseInt(document.getElementById("score").textContent);
+
+
+
+
 
 const urlParams = new URLSearchParams(window.location.search);
 const quizId = urlParams.get('id');
@@ -53,6 +65,7 @@ if (quizId)
 
 function GetQuizbyID(quizId) {
     const quiz = quizzes.find(q => q.title.toLowerCase() === quizId.toLowerCase());
+  
     if (quiz) {
       var i=1;
                Question_input.textContent = quiz.questions[0].text;
@@ -66,6 +79,7 @@ function GetQuizbyID(quizId) {
                 reponse_text.style.display='none';
                 question_type.textContent='QCM (Questions à Choix Multiples)';
                 
+                
         next_btn.addEventListener("click",()=>{
          
          
@@ -76,6 +90,25 @@ function GetQuizbyID(quizId) {
                  Qcm_content.style.display='none';
                  reponse_text.style.display='none';
                  question_type.textContent='Vrai/Faux';
+                 const correct =quiz.questions[i].correct_answer;
+                 qcm_btn.forEach((e) => 
+                  e.addEventListener("click",()=>{
+                    
+                    if(e.textContent.trim().toLowerCase() == correct.trim().toLowerCase()){
+                      e.style.backgroundColor='green';
+                     vrai_btn.style.visibility='hidden';
+                     score_int=score_int+100;
+                     score.textContent=score_int;
+                    }else{
+                      e.style.backgroundColor = 'red'; 
+                      const otherButton = e.nextElementSibling || e.previousElementSibling;
+                      otherButton.style.visibility = 'hidden'; 
+                      otherButton.style.backgroundColor = 'red';
+                     
+                    }
+                  })
+                );
+                
                 }
                 if(quiz.questions[i].type === 'multiple_choice'){
                   Qcm_content.style.display='block';
@@ -86,12 +119,31 @@ function GetQuizbyID(quizId) {
                   a2.textContent=quiz.questions[i].options[1];
                   a3.textContent=quiz.questions[i].options[2];
                   a4.textContent=quiz.questions[i].options[3];
+                  
+                 
                  }
                 if(quiz.questions[i].type === 'text-input'){
                   Qcm_content.style.display='none';
                   TrurFalse_content.style.display='none';
                   reponse_text.style.display='block';
                   question_type.textContent='Réponse Textuelle';
+                  
+                  // traitement de correct answer
+                  document.getElementById("text-input-user").addEventListener("blur", () => {
+                    const userAnswer = document.getElementById("text-input-user");
+                    
+                    
+                    const correctAnswer = quiz.questions[i-1].correct_answer;
+                    
+                    if (userAnswer.value.trim() === correctAnswer) {
+                      score_int=score_int+100;
+                     score.textContent=score_int;
+                
+                      
+                    }
+                });
+                 
+                 
                  }
 
                
@@ -104,7 +156,7 @@ function GetQuizbyID(quizId) {
             }
             if (progress < 100) {
               progress += 100/(quiz.questions.length-1); 
-  
+          // bar animation  
               const progressBar = document.getElementById("progressBar");
               progressBar.animate(
                   [
@@ -118,6 +170,7 @@ function GetQuizbyID(quizId) {
               );
           }
         })
+        // timer
         let  timeLeft = 10*quiz.questions.length;
         const timerInterval = setInterval(() => {
           if (timeLeft <= 0) {
