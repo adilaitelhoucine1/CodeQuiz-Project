@@ -3,9 +3,116 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Quiz Score</title>
+    <link rel="stylesheet" href="style.css">
+<style>
+ 
+</style>
 </head>
-<body>
-    <h1>Ksn ta9mot khla</h1>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+
+    <div class="w-full max-w-3xl mx-auto p-8 bg-white rounded-lg shadow-lg">
+        <h1 class="text-2xl font-bold text-gray-800 mb-4">Your Quiz Results</h1>
+
+        <!-- Display Final Score -->
+        <p class="text-lg font-semibold text-blue-600 mb-6">Final Score: <span id="scoreDisplay"></span></p>
+
+        <!-- Correct Answers Section -->
+        <div>
+            <h2 class="text-xl font-semibold text-green-600 mb-2">Correct Answers</h2>
+            <ul id="correctAnswersList" class="list-disc list-inside space-y-2 text-green-700"></ul>
+        </div>
+
+        <!-- Incorrect Answers Section -->
+        <div class="mt-8">
+            <h2 class="text-xl font-semibold text-red-600 mb-2">Incorrect Answers</h2>
+            <ul id="incorrectAnswersList" class="list-disc list-inside space-y-2 text-red-700"></ul>
+        </div>
+        
+        <div class="font-[sans-serif] flex justify-center gap-4 mt-10">
+
+            <button type="button"
+              class="px-5 py-2.5 flex items-center justify-center rounded text-white text-sm tracking-wider font-medium border-none outline-none bg-blue-600 hover:bg-blue-700 active:bg-blue-600">
+              Download
+              <svg xmlns="http://www.w3.org/2000/svg" width="16px" fill="currentColor" class="ml-2 inline" viewBox="0 0 24 24">
+                <path
+                  d="M12 16a.749.749 0 0 1-.542-.232l-5.25-5.5A.75.75 0 0 1 6.75 9H9.5V3.25c0-.689.561-1.25 1.25-1.25h2.5c.689 0 1.25.561 1.25 1.25V9h2.75a.75.75 0 0 1 .542 1.268l-5.25 5.5A.749.749 0 0 1 12 16zm10.25 6H1.75C.785 22 0 21.215 0 20.25v-.5C0 18.785.785 18 1.75 18h20.5c.965 0 1.75.785 1.75 1.75v.5c0 .965-.785 1.75-1.75 1.75z"
+                  data-original="#000000" />
+              </svg>
+            </button >
+      
+            <button type="button" onclick="window.location.href = `quiz.html?id=${localStorage.getItem('qui-id')}`;"
+              class="px-5 py-2.5 flex items-center justify-center rounded text-white text-sm tracking-wider font-medium border-none outline-none bg-purple-600 hover:bg-purple-700 active:bg-purple-600">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16px" fill="currentColor" class="mr-2 inline" viewBox="0 0 24 24">
+                <path d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z" />
+            </svg>
+              Recommencer le quiz
+            </button>
+      
+            <button type="button"
+              class="px-5 py-2.5 flex items-center justify-center rounded text-white text-sm tracking-wider font-medium border-none outline-none bg-red-600 hover:bg-red-700 active:bg-red-600">
+              <span class="border-r border-white pr-3" onclick="window.location.href='index.html'">Retour à l'accueil</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="11px" fill="currentColor" class="ml-3 inline" viewBox="0 0 320.591 320.591">
+                <path
+                  d="M30.391 318.583a30.37 30.37 0 0 1-21.56-7.288c-11.774-11.844-11.774-30.973 0-42.817L266.643 10.665c12.246-11.459 31.462-10.822 42.921 1.424 10.362 11.074 10.966 28.095 1.414 39.875L51.647 311.295a30.366 30.366 0 0 1-21.256 7.288z"
+                  data-original="#000000" />
+                <path
+                  d="M287.9 318.583a30.37 30.37 0 0 1-21.257-8.806L8.83 51.963C-2.078 39.225-.595 20.055 12.143 9.146c11.369-9.736 28.136-9.736 39.504 0l259.331 257.813c12.243 11.462 12.876 30.679 1.414 42.922-.456.487-.927.958-1.414 1.414a30.368 30.368 0 0 1-23.078 7.288z"
+                  data-original="#000000" />
+              </svg>
+            </button>
+  
+          </div>
+
+    </div>
+
+    <script>
+       
+        const finalScore = localStorage.getItem("finalScore");
+        const correctAnswers = JSON.parse(localStorage.getItem("correctAnswers"));
+        const incorrectAnswers = JSON.parse(localStorage.getItem("incorrectAnswers"));
+        const incorrectList = document.getElementById("incorrectAnswersList");
+        const correctList = document.getElementById("correctAnswersList");
+        
+
+      
+      
+        document.getElementById("scoreDisplay").textContent = finalScore;
+
+        
+        correctAnswers.forEach(question => {
+            const item = document.createElement("li");
+    
+            const p = document.createElement("p");
+            
+            p.style.color='black';
+            p.style.fontFamily='Segoe UI';
+            p.style.border="solid 1px gray";
+            p.style.padding='10px';
+            p.style.background='rgb(194, 255, 199)';
+            p.textContent = "Expliaction :  " + question.explication; 
+            item.textContent = question.text; 
+            correctList.appendChild(item);
+            correctList.appendChild(p);
+        });
+
+        
+        
+        incorrectAnswers.forEach(question => {
+            const item = document.createElement("li");
+            const p = document.createElement("p");
+            
+            p.style.color='black';
+            p.style.fontFamily='Segoe UI';
+            p.style.border="solid 1px gray";
+            p.style.padding='10px';
+            p.style.background="rgb(253, 138, 138)";
+            p.textContent = "Expliaction :  " + question.explication; 
+            item.textContent = question.text;
+            incorrectList.appendChild(item);
+           incorrectList.appendChild(p);
+        });
+    </script>
+
 </body>
 </html>

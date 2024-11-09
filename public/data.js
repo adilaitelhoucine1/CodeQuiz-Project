@@ -22,22 +22,6 @@
           },
           {
               "question_id": 3,
-              "text": "Quel est le résultat de l'expression suivante en JavaScript '5' + 1 - 2",
-              "type": "multiple_choice",
-              "options": ["3", "'51'", "15", "'3'"],
-              "correct_answer": "'51'",
-              "explication": "En JavaScript, `'5' + 1` effectue une concaténation, donnant `'51'`. Ensuite, `'51' - 2` convertit `'51'` en nombre, résultant en 49. La réponse correcte est donc '51' après la première étape."
-          },
-          {
-              "question_id": 4,
-              "text": "Quelle méthode JavaScript est utilisée pour convertir une chaîne de caractères en majuscules ?",
-              "type": "multiple_choice",
-              "options": ["toUpperCase()", "toLowerCase()", "charAt()", "slice()"],
-              "correct_answer": "toUpperCase()",
-              "explication": "La méthode `toUpperCase()` en JavaScript transforme toutes les lettres d'une chaîne de caractères en majuscules, ce qui est utile pour uniformiser les données textuelles."
-          },
-          {
-              "question_id": 5,
               "text": "Vrai ou Faux: `null === undefined` retourne `true`.",
               "type": "true_false",
               "correct_answer": "faux",

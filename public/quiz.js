@@ -48,7 +48,8 @@ let multiple_btn=document.querySelectorAll(".multiple-btn");
 let vrai_btn=document.querySelector("#vrai-btn");
 let faux_btn=document.querySelector("#faux-btn");
 let explication=document.querySelector("#explication");
-
+let correctAnswers = [];  
+let incorrectAnswers = [];
 
 
 let text_input_user=document.getElementById("text-input-user");
@@ -58,12 +59,13 @@ let score_int=parseInt(document.getElementById("score").textContent);
 
 
 
-
 const urlParams = new URLSearchParams(window.location.search);
 const quizId = urlParams.get('id');
 
-if (quizId)  
-    GetQuizbyID(quizId);    
+if (quizId)  {
+  GetQuizbyID(quizId);    
+  localStorage.setItem("qui-id",quizId);
+}
 
 
 function GetQuizbyID(quizId) {
@@ -85,123 +87,130 @@ function GetQuizbyID(quizId) {
               //pour initializer la 1ere interface
               next_btn.textContent="Démarrer Maintenant";
               
-        next_btn.addEventListener("click",()=>{
-          next_btn.textContent="Suivant";
-         
-            if(i<quiz.questions.length){
-                Question_input.textContent = quiz.questions[i].text;
-                if(quiz.questions[i].type === 'true_false'){
-                 TrurFalse_content.style.display='block';
-                 Qcm_content.style.display='none';
-                 reponse_text.style.display='none';
-                 question_type.textContent='Vrai/Faux';
-                 const correct =quiz.questions[i].correct_answer;
-                 qcm_btn.forEach((e) => 
-                  e.addEventListener("click",()=>{
-                    const otherButton = e.nextElementSibling || e.previousElementSibling;
-                    if(e.textContent.trim().toLowerCase() == correct.trim().toLowerCase()){
-                     e.style.backgroundColor='green';
-                     otherButton.style.visibility='hidden';
-                     score_int=score_int+100;
-                     score.textContent=score_int;
-                    }else{
-                      e.style.backgroundColor = 'red';                     
-                      otherButton.style.visibility = 'hidden'; 
-                     
-                    }
-                  })
-                );
-                
-                }
-                if(quiz.questions[i].type === 'multiple_choice'){
-                  multiple_btn.forEach((e) => {
-                    e.style.backgroundColor = 'white'; 
-                    e.style.color = 'black'; 
-                });
-
-                  Qcm_content.style.display='block';
-                  TrurFalse_content.style.display='none';
-                  reponse_text.style.display='none';
-                  question_type.textContent='QCM (Questions à Choix Multiples)';
-                  a1.textContent=quiz.questions[i].options[0];
-                  a2.textContent=quiz.questions[i].options[1];
-                  a3.textContent=quiz.questions[i].options[2];
-                  a4.textContent=quiz.questions[i].options[3];
-                  
-                  const correct =quiz.questions[i].correct_answer;
-                  multiple_btn.forEach((e) => 
-                    e.addEventListener("click",()=>{
-                      
-
-                      //const otherButton = e.nextElementSibling || e.previousElementSibling;
-                      if(e.textContent.trim().toLowerCase() == correct.trim().toLowerCase()){
-
-                        e.style.backgroundColor='green';
-                       score_int=score_int+100;
-                       score.textContent=score_int;
-                       
-                 
-                      }else{
-                        e.style.backgroundColor = 'red';                     
-                       // otherButton.style.visibility = 'hidden'; 
-                       explication.textContent=quiz.questions[i].explication;
-                      }
-                    })
-                  );
-                  
-                 
-                 }
-                if(quiz.questions[i].type === 'text-input'){
-                  Qcm_content.style.display='none';
-                  TrurFalse_content.style.display='none';
-                  reponse_text.style.display='block';
-                  question_type.textContent='Réponse Textuelle';
-                  
-                  // traitement de correct answer
-                  document.getElementById("text-input-user").addEventListener("blur", () => {
-                    const userAnswer = document.getElementById("text-input-user");
-                    
-                    
-                    const correctAnswer = quiz.questions[i-1].correct_answer;
-                    
-                    if (userAnswer.value.trim() === correctAnswer) {
-                      score_int=score_int+100;
-                     score.textContent=score_int;
-                                      
-                    }
-                });
-                 
-                 }
+           
+              next_btn.addEventListener("click", () => {
+                next_btn.textContent = "Suivant";
             
-                Question_count.textContent=Question_count_Int;
-                Question_count_Int++;
-                i++
-            }else{
-              window.location.href="/public/score.html";
-            }
-            if (progress < 100) {
-              progress += 100/(quiz.questions.length  ); 
-          // bar animation  
-              const progressBar = document.getElementById("progressBar");
-              progressBar.animate(
-                  [
-                      { width: progress+ '%' },
-                      { width: progress+ '%' }
-                  ],
-                  {
-                      duration: 300, 
-                      fill: "forwards" 
-                  }
-              );
-          }
-        })
+       
+                if (i < quiz.questions.length) {
+                    Question_input.textContent = quiz.questions[i].text;
+                    const question = quiz.questions[i];
+            
+           
+                    TrurFalse_content.style.display = 'none';
+                    Qcm_content.style.display = 'none';
+                    reponse_text.style.display = 'none';
+            
+                  
+                    if (question.type === 'true_false') {
+                        TrurFalse_content.style.display = 'block';
+                        question_type.textContent = 'Vrai/Faux';
+                        const correct = question.correct_answer.trim().toLowerCase();
+            
+                   
+                        qcm_btn.forEach((btn) => {
+                            const newBtn = btn.cloneNode(true);
+                            btn.replaceWith(newBtn);
+            
+                            newBtn.addEventListener("click", () => {
+                                const otherButton = newBtn.nextElementSibling || newBtn.previousElementSibling;
+                                if (newBtn.textContent.trim().toLowerCase() === correct) {
+                                    newBtn.style.backgroundColor = 'green';
+                                    otherButton.style.visibility = 'hidden';
+                                    score_int += 100;
+                                    score.textContent = score_int;
+                                    correctAnswers.push(question);
+                                } else {
+                                    newBtn.style.backgroundColor = 'red';
+                                    incorrectAnswers.push(question);
+                                }
+            
+                    
+                                localStorage.setItem("correctAnswers", JSON.stringify(correctAnswers));
+                                localStorage.setItem("incorrectAnswers", JSON.stringify(incorrectAnswers));
+                            });
+                        });
+                    } else if (question.type === 'multiple_choice') {
+                        Qcm_content.style.display = 'block';
+                        question_type.textContent = 'QCM (Questions à Choix Multiples)';
+                        [a1, a2, a3, a4].forEach((option, index) => {
+                            option.textContent = question.options[index];
+                        });
+                        const correct = question.correct_answer.trim().toLowerCase();
+            
+                        
+                        multiple_btn.forEach((btn) => {
+                            const newBtn = btn.cloneNode(true);
+                            btn.replaceWith(newBtn);
+            
+                            newBtn.addEventListener("click", () => {
+                                if (newBtn.textContent.trim().toLowerCase() === correct) {
+                                    newBtn.style.backgroundColor = 'green';
+                                    score_int += 100;
+                                    score.textContent = score_int;
+                                    correctAnswers.push(question);
+                                } else {
+                                    newBtn.style.backgroundColor = 'red';
+                                    incorrectAnswers.push(question);
+                                }
+            
+                                localStorage.setItem("correctAnswers", JSON.stringify(correctAnswers));
+                                localStorage.setItem("incorrectAnswers", JSON.stringify(incorrectAnswers));
+                            });
+                        });
+                    } else if (question.type === 'text-input') {
+                        reponse_text.style.display = 'block';
+                        question_type.textContent = 'Réponse Textuelle';
+            
+                      
+                        const userInput = document.getElementById("text-input-user");
+                        userInput.value = ''; 
+            
+                        userInput.addEventListener("blur", () => {
+                            const userAnswer = userInput.value.trim();
+                            const correctAnswer = question.correct_answer.trim();
+                            
+                            if (userAnswer === correctAnswer) {
+                                score_int += 100;
+                                score.textContent = score_int;
+                                correctAnswers.push(question);
+                            } else {
+                                incorrectAnswers.push(question);
+                            }
+            
+                            localStorage.setItem("correctAnswers", JSON.stringify(correctAnswers));
+                            localStorage.setItem("incorrectAnswers", JSON.stringify(incorrectAnswers));
+                        });
+                    }
+            
+                 
+                    Question_count.textContent = Question_count_Int;
+                    Question_count_Int++;
+                    i++;
+            
+                  
+                    localStorage.setItem("finalScore", score_int);
+            
+                    // Met à jour la barre de progression
+                    if (progress < 100) {
+                        progress += 100 / quiz.questions.length;
+                        const progressBar = document.getElementById("progressBar");
+                        progressBar.style.width = progress + '%';
+                    }
+                } else {
+                  
+                    window.location.href = "/public/score.html";
+                }
+            });
+            
+            
         // timer
         let  timeLeft = 15*quiz.questions.length;
         const timerInterval = setInterval(() => {
           if (timeLeft <= 0) {
               clearInterval(timerInterval);
               timerElement.textContent = "Temps écoulé!";
-              window.location.href="/public/score.html";
+              //window.location.href="/public/score.html";
           } else {
               timerElement.textContent = `${timeLeft} s`;
               timeLeft--;
