@@ -151,14 +151,20 @@ function GetQuizbyID(quizId) {
           multiple_btn.forEach((btn) => {
             //if (!btn.hasAttribute('data-clicked')) {
               btn.addEventListener("click", () => {
+               
                 if (btn.textContent.trim().toLowerCase() === correct) {
                   btn.style.backgroundColor = 'green';
                   score_int += 100;
                   score.textContent = score_int;
+                 
+                  
                   correctAnswers.push(question);
+                // console.log(correctAnswers , i);
+                 
                 } else {
                   btn.style.backgroundColor = 'red';
                   incorrectAnswers.push(question);
+                  //console.log(incorrectAnswers,i);
                 }
 
                 localStorage.setItem("correctAnswers", JSON.stringify(correctAnswers));
@@ -195,16 +201,16 @@ function GetQuizbyID(quizId) {
           });
         }
 
-        // Mise à jour du compteur de questions
+        
         Question_count.textContent = Question_count_Int;
         Question_count_Int++;
 
-        // Incrémenter i uniquement si le nombre de questions n'est pas atteint
+
         if (i < quiz.questions.length) {
           i++;
         }
 
-        // Mise à jour de la barre de progression
+
         if (progress < 100) {
           progress += 100 / quiz.questions.length;
           const progressBar = document.getElementById("progressBar");
