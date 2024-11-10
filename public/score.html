@@ -6,7 +6,7 @@
     <title>Quiz Score</title>
     <link rel="stylesheet" href="style.css">
 <style>
- 
+
 </style>
 </head>
 <body class="bg-gray-100 flex items-center justify-center min-h-screen">
@@ -29,6 +29,7 @@
             <ul id="incorrectAnswersList" class="list-disc list-inside space-y-2 text-red-700"></ul>
         </div>
         
+       <span class="text-xl font-semibold text-emerald-400 mb-2">Temps Total est :</span> <span class="temps text-xl font-semibold text-gray-700 mb-2 font-mono"></span>
         <div class="font-[sans-serif] flex justify-center gap-4 mt-10">
 
             <button type="button"
@@ -73,11 +74,15 @@
         const incorrectAnswers = JSON.parse(localStorage.getItem("incorrectAnswers"));
         const incorrectList = document.getElementById("incorrectAnswersList");
         const correctList = document.getElementById("correctAnswersList");
+        const temps=localStorage.getItem("temps-total");
+        ;
         
 
       
       
         document.getElementById("scoreDisplay").textContent = finalScore;
+        //let test =160
+        document.querySelector(".temps").textContent = parseInt(15*localStorage.getItem("quizcount"))-parseInt(temps) + " seconds";
 
         
         correctAnswers.forEach(question => {
@@ -90,7 +95,8 @@
             p.style.border="solid 1px gray";
             p.style.padding='10px';
             p.style.background='rgb(194, 255, 199)';
-            p.textContent = "Expliaction :  " + question.explication; 
+            p.textContent = "Expliaction  de question  :  "+ question.question_id+" est :"+question.explication; 
+            console.log(question)
             item.textContent = question.text; 
             correctList.appendChild(item);
             correctList.appendChild(p);
