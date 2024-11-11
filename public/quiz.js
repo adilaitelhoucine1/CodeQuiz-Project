@@ -227,11 +227,10 @@ function GetQuizbyID(quizId) {
     // Timer logic
     let timeLeft = 15 * quiz.questions.length;
     const timerInterval = setInterval(() => {
-      if (timeLeft <= 0 || i > quiz.questions.length) { 
+      if (timeLeft <= 0 || i >= quiz.questions.length) { 
         localStorage.setItem("temps-total", timeLeft);
         clearInterval(timerInterval);
-        timerElement.textContent = "Temps écoulé!";
-        
+        timerElement.textContent = "Temps écoulé!"; 
         window.location.href = "/public/score.html";
       } else {
         timerElement.textContent = `${timeLeft} s`;

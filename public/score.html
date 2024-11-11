@@ -19,7 +19,7 @@
 
         <!-- Correct Answers Section -->
         <div>
-            <h2 class="text-xl font-semibold text-green-600 mb-2">Correct Answers</h2>
+            <h2 class="text-xl font-semibold text-green-600 mb-2 inline">Correct Answers</h2><span class="correctcount ml-5"></span>
             <ul id="correctAnswersList" class="list-disc list-inside space-y-2 text-green-700"></ul>
         </div>
 
@@ -31,7 +31,7 @@
         
        <br><span class="text-xl font-semibold text-emerald-400 mb-2">Temps Total est :</span> <span class="temps text-xl font-semibold text-gray-700 mb-2 font-mono"></span><br><br>
        <span class="text-xl font-semibold text-amber-500 mt-20 mb-2">Pourcentage est :</span> <span class="pourcentage text-xl font-semibold text-gray-700 mb-2 font-mono"></span>
-        <div class="font-[sans-serif] flex justify-center gap-4 mt-10">
+        <div class="font-[sans-serif] flex justify-center gap-4 mt-10  max-sm:flex-col	">
 
             <button type="button"
               class="px-5 py-2.5 flex items-center justify-center rounded text-white text-sm tracking-wider font-medium border-none outline-none bg-blue-600 hover:bg-blue-700 active:bg-blue-600">
@@ -72,14 +72,16 @@
        
         const finalScore = localStorage.getItem("finalScore");
         const correctAnswers = JSON.parse(localStorage.getItem("correctAnswers"));
-        console.log(correctAnswers.length);
+        
         
         const incorrectAnswers = JSON.parse(localStorage.getItem("incorrectAnswers"));
         const incorrectList = document.getElementById("incorrectAnswersList");
         const correctList = document.getElementById("correctAnswersList");
         const temps=localStorage.getItem("temps-total");
         const pourcentage=document.querySelector(".pourcentage");
+        const correctcount=document.querySelector(".correctcount");
         const quizcount=localStorage.getItem("quizcount");
+        //console.log(correctAnswers);
         
         
         
@@ -87,44 +89,58 @@
       
       
         document.getElementById("scoreDisplay").textContent = finalScore;
-        //let test =160
-        document.querySelector(".temps").textContent = parseInt(15*localStorage.getItem("quizcount"))-parseInt(temps) + " seconds";
+        let test =parseInt(15*localStorage.getItem("quizcount"));
+        let t=parseInt(temps);
+        let ti=test-t;
+        document.querySelector(".temps").textContent = ti ;
 
-        
-        correctAnswers.forEach(question => {
-            const item = document.createElement("li");
+        if(!(correctAnswers===null)){
+
+            correctAnswers.forEach(question => {
+                const item = document.createElement("li");
     
-            const p = document.createElement("p");
-            
-            p.style.color='black';
-            p.style.fontFamily='Segoe UI';
-            p.style.border="solid 1px gray";
-            p.style.padding='10px';
-            p.style.background='rgb(194, 255, 199)';
-            p.textContent = "Expliaction  de question  :  "+ question.question_id+" est :"+question.explication; 
-            //console.log(question)
-            item.textContent = question.text; 
-            correctList.appendChild(item);
-            correctList.appendChild(p);
-            pourcentage.textContent=((correctAnswers.length)*100)/quizcount + "%";
-        });
+                const p = document.createElement("p");
+                
+                p.style.color='black';
+                p.style.fontFamily='Segoe UI';
+                p.style.border="solid 1px gray";
+                p.style.padding='10px';
+                p.style.background='rgb(194, 255, 199)';
+                p.textContent = "Expliaction  de question  :  "+ question.question_id+" est :"+question.explication; 
+                //console.log(question)
+                item.textContent = question.text; 
+                correctList.appendChild(item);
+                correctList.appendChild(p);
+                if(correctAnswers.length != 0){
+                  
+                  pourcentage.textContent=((correctAnswers.length)*100)/quizcount + "%";
+                }else if( correctAnswers == null){
+                  pourcentage.textContent="Aucune repone correcte";
+                  console.log(("test"));
+                  
+                }
+                correctcount.textContent="( "+correctAnswers.length +" )";
+            });
+        }
 
         
-        
-        incorrectAnswers.forEach(question => {
-            const item = document.createElement("li");
-            const p = document.createElement("p");
-            
-            p.style.color='black';
-            p.style.fontFamily='Segoe UI';
-            p.style.border="solid 1px gray";
-            p.style.padding='10px';
-            p.style.background="rgb(253, 138, 138)";
-            p.textContent = "Expliaction  de question  :  "+ question.question_id+" est :"+question.explication; 
-            item.textContent = question.text;
-            incorrectList.appendChild(item);
-           incorrectList.appendChild(p);
-        });
+        if(!(incorrectAnswers==null)){
+
+            incorrectAnswers.forEach(question => {
+                const item = document.createElement("li");
+                const p = document.createElement("p");
+                
+                p.style.color='black';
+                p.style.fontFamily='Segoe UI';
+                p.style.border="solid 1px gray";
+                p.style.padding='10px';
+                p.style.background="rgb(253, 138, 138)";
+                p.textContent = "Expliaction  de question  :  "+ question.question_id+" est :"+question.explication; 
+                item.textContent = question.text;
+                incorrectList.appendChild(item);
+              incorrectList.appendChild(p);
+            });
+        }
     </script>
 
 </body>
