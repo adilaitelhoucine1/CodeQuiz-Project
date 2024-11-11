@@ -15,13 +15,13 @@ toggleOpen.addEventListener('click', handleClick);
 toggleClose.addEventListener('click', handleClick);
 
 // JavaScript to handle answer selection
-const answers = document.querySelectorAll(".answer");
-answers.forEach((element) => {
-  element.addEventListener("click", () => {
-    answers.forEach((e) => e.classList.remove("bg-sky-700", "text-white"));
-    element.classList.add("bg-sky-700", "text-white");
-  });
-});
+// const answers = document.querySelectorAll(".answer");
+// answers.forEach((element) => {
+//   element.addEventListener("click", () => {
+//     answers.forEach((e) => e.classList.remove("bg-sky-700", "text-white"));
+//     element.classList.add("bg-sky-700", "text-white");
+//   });
+// });
 
 // Question script start from here
 let Question_input = document.querySelector("#Question-input");
@@ -30,7 +30,7 @@ let Question_count = document.querySelector("#Question-count");
 let timerElement = document.getElementById("timer");
 
 let Question_count_Int = parseInt(Question_count.textContent);
-console.log(Question_count.textContent);
+
 
 const reponse_text = document.querySelector("#reponse-text");
 const TrurFalse_content = document.querySelector("#TrurFalse-content");
@@ -62,8 +62,8 @@ const quizId = urlParams.get('id');
 
 
 if (quizId) {
-    localStorage.removeItem("correctAnswers");  // Réinitialiser les bonnes réponses
-    localStorage.removeItem("incorrectAnswers");  // Réinitialiser les mauvaises réponses
+    localStorage.removeItem("correctAnswers"); 
+    localStorage.removeItem("incorrectAnswers");  
     localStorage.removeItem("finalScore");
   GetQuizbyID(quizId);
   localStorage.setItem("qui-id", quizId);
@@ -73,118 +73,122 @@ if (quizId) {
 function GetQuizbyID(quizId) {
   const quiz = quizzes.find(q => q.title.toLowerCase() === quizId.toLowerCase());
   localStorage.setItem("quizcount", quiz.questions.length);
+  
   if (quiz) {
-    question_length.textContent=quiz.questions.length;
+    question_length.textContent = quiz.questions.length;
     let i = 0;
-    
 
-  next_btn.textContent = "Démarrer Maintenant";
-
+    next_btn.textContent = "Démarrer Maintenant";
 
     if (isNaN(Question_count_Int)) {
-        Question_count_Int = 1;
-      }
+      Question_count_Int = 1;
+    }
+
     next_btn.addEventListener("click", () => {
       next_btn.textContent = "Suivant";
 
       if (i < quiz.questions.length) {
-
         const question = quiz.questions[i];
         Question_input.textContent = question.text;
 
-        
+        // Reset views and styles
         TrurFalse_content.style.display = 'none';
         Qcm_content.style.display = 'none';
         reponse_text.style.display = 'none';
+        qcm_btn.forEach((btn) => btn.disabled = false);
+        multiple_btn.forEach((btn) => {
+          btn.style.backgroundColor = 'white';
+          btn.style.color = 'black';
+          btn.disabled = false;
+        });
+
+        let answered = false; // Track if the current question has been answered
 
         // Handling question types
         if (question.type === 'true_false') {
+          vrai_btn.style.backgroundColor='white';
+          vrai_btn.style.color='black';
+          vrai_btn.style.visibility='visible'
+          faux_btn.style.backgroundColor='white';
+          faux_btn.style.color='black';
+          faux_btn.style.visibility='visible'
+
           TrurFalse_content.style.display = 'block';
           question_type.textContent = 'Vrai/Faux';
           const correct = question.correct_answer.trim().toLowerCase();
-          //qcm_btn.style.display='block'
+
           qcm_btn.forEach((btn) => {
-          
-              btn.addEventListener("click", () => {
-                const otherButton = btn.nextElementSibling || btn.previousElementSibling;
-                if (btn.textContent.trim().toLowerCase() === correct) {
-                  btn.style.backgroundColor = 'green';
-                  otherButton.style.visibility = 'hidden';
-                  score_int += 100;
-                  score.textContent = score_int;
-                  correctAnswers.push(question);
-                } else {
-                  btn.style.backgroundColor = 'red';
-                  incorrectAnswers.push(question);
-                }
+            btn.addEventListener("click", () => {
+              
+              if (answered) return; // Skip if already answered
 
-                localStorage.setItem("correctAnswers", JSON.stringify(correctAnswers));
-                localStorage.setItem("incorrectAnswers", JSON.stringify(incorrectAnswers));
-              });
-              btn.style.visibility='visible';
-              btn.style.color='black';
-              btn.style.backgroundColor='white';
+              answered = true; // Mark question as answered
+              qcm_btn.forEach((button) => button.disabled = true);
 
-              // Mark the button as clicked to avoid attaching multiple event listeners
-             // btn.setAttribute('data-clicked', 'true');
-       
+              const otherButton = btn.nextElementSibling || btn.previousElementSibling;
+              if (btn.textContent.trim().toLowerCase() === correct) {
+                btn.style.backgroundColor = 'green';
+                otherButton.style.visibility = 'hidden';
+                score_int += 100;
+                score.textContent = score_int;
+                correctAnswers.push(question);
+              } else {
+                btn.style.backgroundColor = 'red';
+                incorrectAnswers.push(question);
+              }
+
+              localStorage.setItem("correctAnswers", JSON.stringify(correctAnswers));
+              localStorage.setItem("incorrectAnswers", JSON.stringify(incorrectAnswers));
+            });
           });
+
         } else if (question.type === 'multiple_choice') {
           Qcm_content.style.display = 'block';
           question_type.textContent = 'QCM (Questions à Choix Multiples)';
-          a1.style.backgroundColor='white';
-          a1.style.color='black';
-          a2.style.backgroundColor='white';
-          a2.style.color='black';
-          a3.style.backgroundColor='white';
-          a3.style.color='black';
-          a4.style.backgroundColor='white';
-          a4.style.color='black';
-
-                a1.textContent=question.options[0];
-                a2.textContent=question.options[1];
-                a3.textContent=question.options[2];
-                a4.textContent=question.options[3];
+          
+          [a1, a2, a3, a4].forEach((optionBtn, index) => {
+            optionBtn.textContent = question.options[index];
+            optionBtn.style.backgroundColor = 'white';
+            optionBtn.style.color = 'black';
+            optionBtn.disabled = false;
+          });
 
           const correct = question.correct_answer.trim().toLowerCase();
 
           multiple_btn.forEach((btn) => {
-            //if (!btn.hasAttribute('data-clicked')) {
-              btn.addEventListener("click", () => {
-               
-                if (btn.textContent.trim().toLowerCase() === correct) {
-                  btn.style.backgroundColor = 'green';
-                  score_int += 100;
-                  score.textContent = score_int;
-                 
-                  
-                  correctAnswers.push(question);
-                // console.log(correctAnswers , i);
-                 
-                } else {
-                  btn.style.backgroundColor = 'red';
-                  incorrectAnswers.push(question);
-                  //console.log(incorrectAnswers,i);
-                }
+            btn.addEventListener("click", () => {
+              if (answered) return; // Skip if already answered
 
-                localStorage.setItem("correctAnswers", JSON.stringify(correctAnswers));
-                localStorage.setItem("incorrectAnswers", JSON.stringify(incorrectAnswers));
-              });
+              answered = true; // Mark question as answered
+              multiple_btn.forEach((button) => button.disabled = true);
 
-             // btn.setAttribute('data-clicked', 'true');
-            // }else{
-            //     btn.style.backgroundColor='white';
-            //     btn.style.color='black';
-            // }
+              if (btn.textContent.trim().toLowerCase() === correct) {
+                btn.style.backgroundColor = 'green';
+                score_int += 100;
+                score.textContent = score_int;
+                correctAnswers.push(question);
+              } else {
+                btn.style.backgroundColor = 'red';
+                incorrectAnswers.push(question);
+              }
+
+              localStorage.setItem("correctAnswers", JSON.stringify(correctAnswers));
+              localStorage.setItem("incorrectAnswers", JSON.stringify(incorrectAnswers));
+            });
           });
+
         } else if (question.type === 'text-input') {
           reponse_text.style.display = 'block';
           question_type.textContent = 'Réponse Textuelle';
 
           const userInput = document.getElementById("text-input-user");
           userInput.value = '';
-
+          
           userInput.addEventListener("blur", () => {
+            if (answered) return; // Skip if already answered
+
+            answered = true; // Mark question as answered
+
             const userAnswer = userInput.value.trim();
             const correctAnswer = question.correct_answer.trim();
 
@@ -201,15 +205,12 @@ function GetQuizbyID(quizId) {
           });
         }
 
-        
         Question_count.textContent = Question_count_Int;
         Question_count_Int++;
-
 
         if (i < quiz.questions.length) {
           i++;
         }
-
 
         if (progress < 100) {
           progress += 100 / quiz.questions.length;
@@ -224,14 +225,14 @@ function GetQuizbyID(quizId) {
     });
 
     // Timer logic
-    let timeLeft = 15* quiz.questions.length;
+    let timeLeft = 15 * quiz.questions.length;
     const timerInterval = setInterval(() => {
-      if (timeLeft <= 0 || i >= quiz.questions.length) { 
-        localStorage.setItem("temps-total",timeLeft);
+      if (timeLeft <= 0 || i > quiz.questions.length) { 
+        localStorage.setItem("temps-total", timeLeft);
         clearInterval(timerInterval);
         timerElement.textContent = "Temps écoulé!";
         
-         window.location.href = "/public/score.html";
+        window.location.href = "/public/score.html";
       } else {
         timerElement.textContent = `${timeLeft} s`;
         timeLeft--;
