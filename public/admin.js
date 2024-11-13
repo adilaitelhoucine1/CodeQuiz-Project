@@ -1,10 +1,9 @@
 
 
+
 const Enregistrer = document.querySelector("#Enregistrer");
 const quizCardsContainer = document.getElementById("quiz-cards-container");
 let quizIdCounter = 0;
-
-
 
 
 Enregistrer.addEventListener("click", () => {
@@ -13,43 +12,9 @@ Enregistrer.addEventListener("click", () => {
   let quizLevel = document.getElementById("select").value;
 
   
-  let quizCount=document.getElementById("quiz-qu-count").value;
-
-  if (!quizTitle || !quizDescription || !quizCount) {
-    alert("3mer layhdik kolxi");
-    return;
-  }
-
-  const newQuiz = {
-    id: ++quizIdCounter,
-    title: quizTitle,
-    description: quizDescription,
-    niveau: quizLevel,
-    question_count:quizCount,
-    questions: []
-  };
-
-  const quizData = JSON.parse(localStorage.getItem("quizData")) || [];
-  quizData.push(newQuiz); 
-  localStorage.setItem("quizData", JSON.stringify(quizData));
-
-  createQuizCard(newQuiz);
-
-quizTitle= '';
-quizDescription= '';
-quizIdCounter= '';
-
-});
-
-
-
-Enregistrer.addEventListener("click", () => {
-  let quizTitle = document.querySelector("#quiz-title").value;
-  let quizDescription = document.querySelector("#quiz-description").value;
-  let quizLevel = document.getElementById("select").value;
   let quizCount = document.getElementById("quiz-qu-count").value;
 
-  if (!quizTitle || !quizDescription || !quizCount) {
+  if (!quizTitle || !quizDescription || !quizCount || Number(quizLevel)<0) {
     alert("3mer kolxi a khali");
     return;
   }
@@ -94,10 +59,19 @@ function createQuizCard(quiz) {
 
 
   quizCardsContainer.appendChild(quizCard);
+ quizCard.querySelector(".edit-quiz").addEventListener("click",()=>{
+  const quizData = JSON.parse(localStorage.getItem("quizData"));
+ let questions=quizData[(quiz.id)-1].questions;
+ })
 
 
+
+
+
+
+    // detlete btn
   quizCard.querySelector(".delete-quiz").addEventListener("click", () => {
-    console.log(quizCard);
+ 
     if (confirm("Êtes-vous sûr de vouloir supprimer ce quiz ?")) {
       
       quizCard.remove();

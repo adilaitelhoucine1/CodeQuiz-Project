@@ -1,88 +1,62 @@
-// navbar script
-var toggleOpen = document.getElementById('toggleOpen');
-var toggleClose = document.getElementById('toggleClose');
-var collapseMenu = document.getElementById('collapseMenu');
 
-function handleClick() {
-  if (collapseMenu.style.display === 'block') {
-    collapseMenu.style.display = 'none';
-  } else {
-    collapseMenu.style.display = 'block';
-  }
-}
+// Navbar toggle script
+// var toggleOpen = document.getElementById('toggleOpen');
+// var toggleClose = document.getElementById('toggleClose');
+// var collapseMenu = document.getElementById('collapseMenu');
+
+// function handleClick() {
+//   if (collapseMenu.style.display === 'block') {
+//     collapseMenu.style.display = 'none';
+//   } else {
+//     collapseMenu.style.display = 'block';
+//   }
+// }
+
+// toggleOpen.addEventListener('click', handleClick);
+// toggleClose.addEventListener('click', handleClick);
 
 
-toggleOpen.addEventListener('click', handleClick);
-toggleClose.addEventListener('click', handleClick);
-// end navbar script
+function loadQuizzes() {
+  const quizzes = JSON.parse(localStorage.getItem('quizData'));
+  const container = document.querySelector(".quizContainer"); 
 
- // pop code start sg da
-const viewButtons = document.querySelectorAll('#view-btn');
-const popup = document.getElementById('pop-up');
-const popupTitle = document.querySelector('.popup-title'); 
-const popupDescription = document.querySelector('.popup-description'); 
-const closepop = document.getElementById('pop-up-cancel'); 
 
-// viewButtons.forEach((button, index) => { 
+  container.innerHTML = '';
 
-//   button.addEventList.ener('click', () => { 
-    
-//     const card = button.closest('.card');
+  quizzes.forEach((quiz) => {
+    const card = document.createElement('div');
+    card.classList.add('bg-white', 'shadow-lg', 'w-full', 'h-fit', 'max-w-sm', 'rounded-lg', 'overflow-hidden', 'mx-auto', 'mt-4', 'card');
+    card.setAttribute('data-id', quiz.id);
+
+   
+    card.innerHTML = `
+      <div class="min-h-[256px]">
+        <img src="/images/general-quiz.png" class="w-full" alt="${quiz.title}" />
+      </div>
+      <div class="p-6">
+        <h3 class="text-gray-800 text-xl font-bold">${quiz.title}</h3>
+        <p class="mt-4 text-sm text-gray-500">${quiz.description}</p>
+        <button type="button" class="mt-6 px-5 py-2.5 rounded-lg text-white text-sm bg-blue-600 hover:bg-blue-700 active:bg-blue-600" id="view-btn" data-id="${quiz.id}">View Quiz</button>
+      </div>
+    `;
+
+    container.appendChild(card);
 
  
-//     let title = card.querySelector('h3').textContent;
-
-//     let description = card.querySelector('p').textContent;
-    
-
-//     popupTitle.textContent = title; 
-//     popupDescription.textContent = description;
-
-
-//     popup.classList.remove('hidden'); 
-//   });
-// });
-
-// Fermer le popup
-closepop.addEventListener("click",()=>{
-  popup.classList.toggle("hidden");
-})
-
-//animation
-
-
-
-const container = document.querySelector('.container');
-window.onscroll = function() {scrollFunction()};
-let animation= container.animate(
-  [
-    { transform: 'translateY(100%)' }, 
-    { transform: 'translateY(0%)' }
-  ],
-  {
-    duration: 3000
-  }
-);
-function scrollFunction() {
-  if (document.body.scrollTop > 1530|| document.documentElement.scrollTop > 1530) {
-    animation.play();
-  }else{
-    animation.pause();
-  }
-}
-   
-
-
-const quizCards = Array.from(document.querySelectorAll(".card")); 
-quizCards.forEach((card) => {
-    const viewButton = card.querySelector("#view-btn");
-
-    viewButton.addEventListener("click", () => {
-        const quizId = card.getAttribute("data-id"); 
-        loadQuizById(quizId);
+    const viewButton = card.querySelector('#view-btn');
+    viewButton.addEventListener('click', () => {
+      loadQuizById(quiz.title);
     });
-});
-function loadQuizById(quizId){
-// rediger to oother page with quiz id to know with card has beenn selected
-    window.location.href = `quiz.html?id=${quizId}`;
+  });
 }
+
+
+function loadQuizById(quiztitle) {
+  // Redirect to the quiz page with the quiz ID in the URL
+  window.location.href = `quiz.html?id=${quiztitle}`;
+}
+
+// Load quizzes when the page loads
+window.onload = loadQuizzes;
+
+
