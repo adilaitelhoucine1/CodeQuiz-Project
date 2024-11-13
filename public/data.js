@@ -3,6 +3,8 @@ const quizzes = [
       "id": 1,
       "title": "javascript",
       "description": "Testez vos connaissances en JavaScript.",
+      "niveau":"Deficile",
+      "question-count":10,
       "questions": [
         {
           "question_id": 1,
@@ -84,6 +86,8 @@ const quizzes = [
       "id": 2,
       "title": "html-css",
       "description": "Découvrez vos connaissances en HTML et CSS.",
+      "question-count":10,
+      "niveau":"Facile",
       "questions": [
         {
           "question_id": 1,
@@ -156,6 +160,8 @@ const quizzes = [
       "id": 3,
       "title": "database-sql",
       "description": "Testez vos connaissances en DataBase & SQL.",
+      "question-count":10,
+      "niveau":"Moyenne",
       "questions": [
         {
           "question_id": 1,
@@ -225,4 +231,4 @@ const quizzes = [
       ]
     }
   ];
-  
+  localStorage.setItem("quizData", JSON.stringify(quizzes));
