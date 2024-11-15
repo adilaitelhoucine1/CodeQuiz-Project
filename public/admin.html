@@ -3,40 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin - Création de Quiz</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <title>Administration des Quiz</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
-<body>
-    <div class="container mx-auto p-6">
-        <h1 class="text-3xl font-bold mb-6">Créer un Quiz</h1>
-        <form id="quiz-form" class="space-y-4">
-            <input type="text" id="quiz-title" placeholder="Titre du Quiz" class="w-full p-2 border rounded">
-            <textarea id="quiz-description" placeholder="Description" class="w-full p-2 border rounded"></textarea>
-            <input type="text" id="quiz-category" placeholder="Catégorie" class="w-full p-2 border rounded">
-            <button type="submit" class="bg-blue-500 text-white p-2 rounded">Créer le Quiz</button>
-        </form>
+<body class="bg-gray-100">
+    <div class="flex flex-col md:flex-row min-h-screen">
+        <!-- Sidebar -->
+        <div class="w-full md:w-64 bg-gray-800 p-4">
+            <h1 class="text-white text-xl font-bold mb-8">Administration</h1>
+            <nav class="space-y-2">
+                <a href="#" class="block text-white p-2 rounded hover:bg-gray-700" onclick="showSection('quiz-list')">
+                    <i class="fas fa-list mr-2"></i>Liste des Quiz
+                </a>
+                <a href="#" class="block text-white p-2 rounded hover:bg-gray-700" onclick="showSection('create-quiz')">
+                    <i class="fas fa-plus mr-2"></i>Créer un Quiz
+                </a>
+                <a href="index.html" class="block text-white p-2 rounded hover:bg-gray-700">
+                    <i class="fas fa-home mr-2"></i>Retour à l'accueil
+                </a>
+            </nav>
+        </div>
 
-        <div id="question-form-container" class="hidden mt-6">
-            <h2 class="text-xl">Ajouter des Questions</h2>
-            <form id="question-form" class="space-y-4">
-                <input type="text" id="question-text" placeholder="Texte de la question" class="w-full p-2 border rounded">
-                <select id="question-type" class="w-full p-2 border rounded">
-                    <option value="multiple_choice">Choix multiples</option>
-                    <option value="true_false">Vrai/Faux</option>
-                    <option value="text_input">Réponse textuelle</option>
-                </select>
-                <div id="question-options" class="hidden">
-                    <input type="text" id="option-1" placeholder="Option 1" class="w-full p-2 border rounded">
-                    <input type="text" id="option-2" placeholder="Option 2" class="w-full p-2 border rounded">
-                    <input type="text" id="option-3" placeholder="Option 3" class="w-full p-2 border rounded">
-                    <input type="text" id="option-4" placeholder="Option 4" class="w-full p-2 border rounded">
-                </div>
-                <input type="text" id="correct-answer" placeholder="Réponse correcte" class="w-full p-2 border rounded">
-                <button type="submit" class="bg-blue-500 text-white p-2 rounded">Ajouter la question</button>
-            </form>
+        <!-- Main Content -->
+        <div class="flex-1 p-4 md:p-8">
+            <!-- Quiz List Section -->
+            <div id="quiz-list-section" class="section">
+                <h2 class="text-2xl font-bold mb-6">Liste des Quiz</h2>
+                <div id="quiz-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+            </div>
+
+            <!-- Create Quiz Section -->
+            <div id="create-quiz-section" class="section hidden">
+                <h2 class="text-2xl font-bold mb-6">Créer un Nouveau Quiz</h2>
+                <form id="quiz-form" class="space-y-6">
+                    <div>
+                        <label class="block mb-2">Titre du Quiz</label>
+                        <input type="text" id="quiz-title" class="w-full p-2 border rounded" required>
+                    </div>
+                    <div>
+                        <label class="block mb-2">Description</label>
+                        <textarea id="quiz-description" class="w-full p-2 border rounded" rows="3" required></textarea>
+                    </div>
+                    <div>
+                        <label class="block mb-2">Niveau de difficulté</label>
+                        <select id="quiz-difficulty" class="w-full p-2 border rounded" required>
+                            <option value="facile">Facile</option>
+                            <option value="moyen">Moyen</option>
+                            <option value="difficile">Difficile</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block mb-2">Temps estimé (en minutes)</label>
+                        <input type="number" id="quiz-time" class="w-full p-2 border rounded" min="1" required>
+                    </div>
+                    <div>
+                        <label class="block mb-2">Actif</label>
+                        <input type="checkbox" id="quiz-active" class="w-4 h-4">
+                    </div>
+                    
+                    <div id="questions-container" class="space-y-4">
+                        <!-- Questions will be added here -->
+                    </div>
+
+                    <button type="button" onclick="addQuestion()" class="bg-blue-600 text-white px-4 py-2 rounded">
+                        Ajouter une Question
+                    </button>
+
+                    <button type="submit" class="bg-green-600 text-white px-6 py-2 rounded">
+                        Enregistrer le Quiz
+                    </button>
+                </form>
+            </div>
         </div>
     </div>
-
     <script src="admin.js"></script>
 </body>
 </html>
