@@ -231,4 +231,4 @@ const quizzes = [
       ]
     }
   ];
-  localStorage.setItem("quizData", JSON.stringify(quizzes));
+  localStorage.setItem("quizzes", JSON.stringify(quizzes));

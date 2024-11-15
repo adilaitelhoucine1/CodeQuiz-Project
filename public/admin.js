@@ -1,93 +1,59 @@
+document.addEventListener("DOMContentLoaded", () => {
+  const quizForm = document.getElementById("quiz-form");
+  const questionForm = document.getElementById("question-form");
+  const questionFormContainer = document.getElementById("question-form-container");
 
+  // Récupérer les quizzes existants dans localStorage
+  let quizzes = JSON.parse(localStorage.getItem("quizzes")) || [];
 
+  quizForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const title = document.getElementById("quiz-title").value;
+      const description = document.getElementById("quiz-description").value;
+      const category = document.getElementById("quiz-category").value;
 
-const Enregistrer = document.querySelector("#Enregistrer");
-const quizCardsContainer = document.getElementById("quiz-cards-container");
-let quizIdCounter = 0;
+      // Ajouter un quiz au tableau
+      const newQuiz = {
+          title,
+          description,
+          category,
+          questions: []
+      };
 
+      quizzes.push(newQuiz);
+      localStorage.setItem("quizzes", JSON.stringify(quizzes));
+      alert("Quiz créé avec succès !");
 
-Enregistrer.addEventListener("click", () => {
-  let quizTitle = document.querySelector("#quiz-title").value;
-  let quizDescription = document.querySelector("#quiz-description").value;
-  let quizLevel = document.getElementById("select").value;
-
-  
-  let quizCount = document.getElementById("quiz-qu-count").value;
-
-  if (!quizTitle || !quizDescription || !quizCount || Number(quizLevel)<0) {
-    alert("3mer kolxi a khali");
-    return;
-  }
-
-  const newQuiz = {
-    id: ++quizIdCounter,
-    title: quizTitle,
-    description: quizDescription,
-    niveau: quizLevel,
-    question_count: quizCount,
-    questions: [] 
-  };
-
-  const quizData = JSON.parse(localStorage.getItem("quizData")) ;
-  quizData.push(newQuiz);
-  localStorage.setItem("quizData", JSON.stringify(quizData)); 
-
-  localStorage.setItem("quizIdCounter", quizIdCounter);
-
-  createQuizCard(newQuiz);
-
-  document.querySelector("#quiz-title").value = '';
-  document.querySelector("#quiz-description").value = '';
-  document.getElementById("quiz-qu-count").value = '';
-});
-
-function createQuizCard(quiz) {
-  const quizCard = document.createElement("div");
-  quizCard.classList.add("bg-white", "p-6", "rounded-lg", "shadow-lg");
-  quizCard.setAttribute("data-id", quiz.id);
-
-  quizCard.innerHTML = `
-    <h2 class="text-xl font-semibold text-gray-800 mb-4 quiz-title">${quiz.title}</h2>
-    <p class="text-gray-600 mb-2">Description : ${quiz.description}</p>
-    <p class="text-gray-600 mb-2">Niveau : ${quiz.niveau}</p>
-    <p class="text-gray-600 mb-4">Questions : ${quiz.question_count}</p>
-    <div class="flex justify-between">
-      <button class="text-indigo-600 hover:underline edit-quiz">Modifier</button>
-      <button class="text-red-500 hover:underline delete-quiz">Supprimer</button>
-    </div>
-  `;
-
-
-  quizCardsContainer.appendChild(quizCard);
- quizCard.querySelector(".edit-quiz").addEventListener("click",()=>{
-  const quizData = JSON.parse(localStorage.getItem("quizData"));
- let questions=quizData[(quiz.id)-1].questions;
- })
-
-
-
-
-
-
-    // detlete btn
-  quizCard.querySelector(".delete-quiz").addEventListener("click", () => {
- 
-    if (confirm("Êtes-vous sûr de vouloir supprimer ce quiz ?")) {
-      
-      quizCard.remove();
-      const dataquizes = JSON.parse(localStorage.getItem("quizData"));
-      const UpdatedQiuzesData = dataquizes.filter(q => q.id !== quiz.id);
-      localStorage.setItem("quizData", JSON.stringify(UpdatedQiuzesData));
-    }
+      // Afficher le formulaire des questions
+      questionFormContainer.classList.remove("hidden");
   });
-}
 
-window.addEventListener("DOMContentLoaded", () => {
-  const quizData = JSON.parse(localStorage.getItem("quizData"));
-  quizData.forEach(quiz => {
-    createQuizCard(quiz);
+  questionForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const questionText = document.getElementById("question-text").value;
+      const questionType = document.getElementById("question-type").value;
+      const correctAnswer = document.getElementById("correct-answer").value;
+
+      const newQuestion = {
+          text: questionText,
+          type: questionType,
+          correct_answer: correctAnswer,
+          options: []
+      };
+
+      if (questionType === 'multiple_choice') {
+          newQuestion.options = [
+              document.getElementById("option-1").value,
+              document.getElementById("option-2").value,
+              document.getElementById("option-3").value,
+              document.getElementById("option-4").value
+          ];
+      }
+
+      // Ajouter la question au dernier quiz
+      quizzes[quizzes.length - 1].questions.push(newQuestion);
+      localStorage.setItem("quizzes", JSON.stringify(quizzes));
+
+      alert("Question ajoutée avec succès !");
   });
 });
-
-
-
