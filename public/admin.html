@@ -9,21 +9,25 @@
 </head>
 <body class="bg-gray-100">
     <div class="flex flex-col md:flex-row min-h-screen">
-        <!-- Sidebar -->
-        <div class="w-full md:w-64 bg-gray-800 p-4">
-            <h1 class="text-white text-xl font-bold mb-8">Administration</h1>
-            <nav class="space-y-2">
-                <a href="#" class="block text-white p-2 rounded hover:bg-gray-700" onclick="showSection('quiz-list')">
-                    <i class="fas fa-list mr-2"></i>Liste des Quiz
-                </a>
-                <a href="#" class="block text-white p-2 rounded hover:bg-gray-700" onclick="showSection('create-quiz')">
-                    <i class="fas fa-plus mr-2"></i>Créer un Quiz
-                </a>
-                <a href="index.html" class="block text-white p-2 rounded hover:bg-gray-700">
-                    <i class="fas fa-home mr-2"></i>Retour à l'accueil
-                </a>
-            </nav>
-        </div>
+     <!-- Sidebar -->
+     <div class="w-full md:w-64 bg-blue-800 p-4">
+        <h1 class="text-white text-xl font-bold mb-8 border-b-4 border-indigo-500 p-3 text-center">Administration</h1>
+        <nav class="space-y-2">
+            <a href="#" class="block text-white p-3 rounded hover:bg-gray-400" onclick="showSection('quiz-list')">
+                <i class="fas fa-list mr-2"></i>Liste des Quiz
+            </a>
+            <a href="#" class="block text-white p-3 rounded hover:bg-gray-600" onclick="showSection('create-quiz')">
+                <i class="fas fa-plus mr-2"></i>Créer un Quiz
+            </a>
+            <a href="index.html" class="block text-white p-3 rounded hover:bg-gray-800">
+                <i class="fas fa-home mr-2"></i>Retour à l'accueil
+            </a>
+            <a href="statistique.html" class="block text-white p-3 rounded hover:bg-gray-900">
+                <i class="fas fa-chart-bar mr-2"></i>Statistique
+            </a>
+            
+        </nav>
+    </div>
 
         <!-- Main Content -->
         <div class="flex-1 p-4 md:p-8">
